@@ -6,9 +6,18 @@ import locale
 from os import environ
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-
+from models import Users, db
+from cfg import *
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+db.init_app(app)
+login = LoginManager(app)
+
+
+@login.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
 
 
 @app.route('/')
