@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 from os import environ
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from functions.models import Users, db
+from functions.forms import *
 from cfg import *
 
 app = Flask(__name__)
@@ -19,6 +20,22 @@ def load_user(user_id):
 @app.route('/')
 def index():
     return render_template('index.html', title='MainPage')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    forms = LoginForm()
+    if forms.validate_on_submit():
+        nick = forms.username.data
+        password = forms.password.data
+        user = Users.query.filter_by(username=nick).first()
+        if not (user and user.check_password(password)):
+            abort(403)
+        login_user(user, remember=forms.remember_me)
+        return redirect(url_for('index'))
+    return render_template('login.html', title='Login', form=forms)
 
 
 if __name__ == '__main__':
