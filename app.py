@@ -55,7 +55,7 @@ def registration():
         existing_user = Users.query.filter_by(email=email).first()
         if existing_user:
             abort(400)
-        user = Users(username=name, email=email, password=password, firstName=first_name, secondName=second_name)
+        user = Users(username=name, email=email, firstName=first_name, secondName=second_name)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()

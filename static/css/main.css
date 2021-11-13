@@ -1,0 +1,10 @@
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+main {
+    background: #2F2FA2;
+    flex-grow: 4;
+}

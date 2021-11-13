@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="page-registration">
+    <h1>Регистрация</h1>
+    <form action="{{ url_for('registration') }}" method="post" novalidate>
+        {{ form.csrf_token  }}
+            <p>{{ form.username.label }}</p>
+            <p>{{ form.username }}</p>
+            <p>{{ form.email.label }}</p>
+            <p>{{ form.email }}</p>
+            <p>{{ form.firstName.label }}</p>
+            <p>{{ form.firstName }}</p>
+            <p>{{ form.secondName.label }}</p>
+            <p>{{ form.secondName }}</p>
+            <p>{{ form.password.label }}</p>
+            <p>{{ form.password }}</p>
+            <p>{{ form.password_confirm.label }}</p>
+            <p>{{ form.password_confirm }}</p>
+        <button type="submit" class="button">Регистрироваться</button>
+    </form>
+    </div>
+{% endblock %}
