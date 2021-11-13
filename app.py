@@ -50,8 +50,8 @@ def registration():
         email = register_form.email.data
         name = register_form.username.data
         password = register_form.password.data
-        first_name = register_form.firstName
-        second_name = register_form.secondName
+        first_name = register_form.firstName.data
+        second_name = register_form.secondName.data
         existing_user = Users.query.filter_by(email=email).first()
         if existing_user:
             abort(400)
