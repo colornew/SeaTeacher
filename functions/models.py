@@ -10,6 +10,8 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
+    firstName = db.Column(db.String(64), index=True, nullable=True)
+    secondName = db.Column(db.String(64), index=True, nullable=True)
     password = db.Column(db.String(255), nullable=True)
     score = db.Column(db.Integer, default=0)
     class_user = db.Column(db.Integer, default=5)
