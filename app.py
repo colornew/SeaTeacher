@@ -9,14 +9,17 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = S_KEY
 db.init_app(app)
 login = LoginManager(app)
+login.init_app(app)
 migrate = Migrate(app, db)
 
 
 @login.user_loader
-def load_user(user_id):
-    return Users.query.get(int(user_id))
+def load_user(id):
+    return Users.query.get(int(id))
 
 
 @app.route('/')
