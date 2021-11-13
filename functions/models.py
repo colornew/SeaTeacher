@@ -13,6 +13,7 @@ class Users(db.Model, UserMixin):
     firstName = db.Column(db.String(64), index=True, nullable=True)
     secondName = db.Column(db.String(64), index=True, nullable=True)
     password = db.Column(db.String(255), nullable=True)
+    is_admin = db.Column(db.Boolean, default=False)
     score = db.Column(db.Integer, default=0)
     class_user = db.Column(db.Integer, default=5)
 

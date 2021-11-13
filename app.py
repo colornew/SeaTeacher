@@ -5,11 +5,13 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 from functions.models import Users, db
 from functions.forms import *
 from cfg import *
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 db.init_app(app)
 login = LoginManager(app)
+migrate = Migrate(app, db)
 
 
 @login.user_loader
