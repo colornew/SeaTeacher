@@ -95,5 +95,11 @@ def settings():
     return render_template('settings.html', title='Settings')
 
 
+@app.route('/user/<int:user_id>')
+def profile(user_id):
+    profiles = Users.query.filter_by(id=user_id)
+    return render_template('profile.html', user=profiles)
+
+
 if __name__ == '__main__':
     app.run()
