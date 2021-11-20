@@ -1,12 +1,25 @@
 <header>
     <a class="logo" href="/">SeaTeacher</a>
     {% if current_user.is_anonymous %}
-    <div class="button-group">
-        <a href="{{ url_for('login') }}" class="button small">Войти</a>
-        <a href="{{ url_for('registration') }}" class="button small">Регистрироваться</a>
-    </div>
+        <div class="button-group">
+            <a href="{{ url_for('login') }}" class="button small">Войти</a>
+            <a href="{{ url_for('registration') }}" class="button small">Регистрироваться</a>
+        </div>
     {% else %}
-    <div class="block-nick"><a href="/user/{{ current_user.username }}" class="nickname">{{ current_user.username }}</a>
-    </div>
+        <div id="menuToggle">
+            <input type="checkbox"/>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <a href="user/{{ current_user.id }}">
+                    <li>Профиль</li>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <li>Выход</li>
+                </a>
+            </ul>
+        </div>
+
     {% endif %}
 </header>

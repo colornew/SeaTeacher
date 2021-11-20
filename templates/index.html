@@ -1,1 +1,11 @@
 {% extends 'base.html' %}
+{% block content %}
+    <div class="welcome-block">
+        <div class="welcome-string">Welcome to our school!!!</div>
+        {% if current_user.is_anonymous %}
+            <a href="{{ url_for('registration') }}" class="button">Lets Go!</a>
+        {% else %}
+            <a href="{{ url_for('roadmap') }}" class="button">Lets Go!</a>
+        {% endif %}</div>
+
+{% endblock %}
