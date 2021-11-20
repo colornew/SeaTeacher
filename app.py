@@ -22,6 +22,12 @@ def load_user(id):
     return Users.query.get(int(id))
 
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
 @app.route('/')
 def index():
     return render_template('index.html', title='MainPage')
@@ -63,10 +69,10 @@ def registration():
     return render_template('registration.html', form=register_form, title='Registration')
 
 
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+@app.route('user/<int:user_id>')
+def profile(user_id):
+    user = Users.query.filter_by(id=user_id).first()
+    return render_template('user.html', title=user.username, user=user)
 
 
 @app.route('/roadmap')
