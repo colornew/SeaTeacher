@@ -25,3 +25,10 @@ class Users(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+
+class Lesson(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(2048), nullable=True)
+    date_create = db.Column(db.String(64))
+    name = db.Column(db.String(64), index=True, unique=True)

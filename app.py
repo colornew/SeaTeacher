@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, abort, fla
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from os import environ
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-from functions.models import Users, db
+from functions.models import Users, db, Lesson
 from functions.forms import *
 from cfg import *
 from flask_migrate import Migrate
@@ -88,6 +88,12 @@ def profile(user_id):
 @app.route('/roadmap')
 def roadmap():
     return render_template('roadmap.html', user=current_user)
+
+
+@app.route('/lesson/<int:id>')
+def lesson(id):
+    lessons = 1
+    render_template('lesson.html', lesson_format=lessons)
 
 
 if __name__ == '__main__':
