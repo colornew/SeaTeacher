@@ -33,6 +33,16 @@ def index():
     return render_template('index.html', title='MainPage')
 
 
+@app.errorhandler(403)
+def not_found_error(error):
+    return render_template('errors/403.html'), 403
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('errors/404.html'), 403
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:

@@ -42,3 +42,8 @@ main .button {
     margin-right: 10px;
     padding: 1vh 4vw 1vh 4vw;
 }
+
+.error {
+    font-size: xxx-large;
+    color: #F64C72;
+}
