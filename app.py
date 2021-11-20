@@ -63,5 +63,16 @@ def registration():
     return render_template('registration.html', form=register_form, title='Registration')
 
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+@app.route('/roadmap')
+def roadmap():
+    return render_template('roadmap.html', user=current_user)
+
+
 if __name__ == '__main__':
     app.run()
