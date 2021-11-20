@@ -59,13 +59,14 @@ a {
 #menuToggle {
     display: block;
     position: absolute;
-    top: 50px;
     right: 50px;
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
 }
-
+#menuToggle ul a{
+    background: rgba(0, 0, 0, 0.2);
+}
 #menuToggle input {
     display: block;
     width: 40px;
@@ -82,8 +83,8 @@ a {
 
 #menuToggle span {
     display: block;
-    width: 33px;
-    height: 4px;
+    width: 40px;
+    height: 6px;
     margin-bottom: 5px;
     position: relative;
     background: #F64C72;
