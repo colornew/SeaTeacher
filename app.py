@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, flash
-from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from os import environ
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from functions.models import Users, db, Lesson
@@ -87,13 +86,13 @@ def profile(user_id):
 
 @app.route('/roadmap')
 def roadmap():
-    return render_template('roadmap.html', user=current_user)
+    return render_template('roadmap.html', title='Roadmap', user=current_user)
 
 
-@app.route('/lesson/<int:id>')
-def lesson(id):
-    lessons = 1
-    render_template('lesson.html', lesson_format=lessons)
+@app.route('/lesson/<int:lesson_id>')
+def lesson(lesson_id):
+    lessons = Lesson.query.filter_by(id=lesson_id).first()
+    return render_template('lesson.html', title='Lesson',lesson_format=lessons)
 
 
 if __name__ == '__main__':
