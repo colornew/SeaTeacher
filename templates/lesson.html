@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{ lesson_format.text }}
+    <div class="lesson-name" id="lesson-name">{{ lesson_format.name }}</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        let text = "{{ lesson_format.text }}";
+    </script>
 {% endblock %}

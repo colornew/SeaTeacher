@@ -92,7 +92,7 @@ def roadmap():
 @app.route('/lesson/<int:lesson_id>')
 def lesson(lesson_id):
     lessons = Lesson.query.filter_by(id=lesson_id).first()
-    return render_template('lesson.html', title='Lesson',lesson_format=lessons)
+    return render_template('lesson.html', title='Lesson', lesson_format=lessons)
 
 
 if __name__ == '__main__':
