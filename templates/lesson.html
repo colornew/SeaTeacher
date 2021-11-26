@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-
+{% block custom %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson.css') }}">
+{% endblock %}
 {% block content %}
     <div class="lesson-name" id="lesson-name">{{ lesson_format.name }}</div>
     <div class="content"></div>
@@ -19,19 +21,17 @@
                 if (!first) {
                     cont.className = "content-block"
                     blockContent.appendChild(cont);
-                    alert(txt)
                     cont = document.getElementsByClassName('content-block')[count]
                     cont.innerHTML = txt
-                    count ++
+                    count++
                     txt = ''
-                }
-                else {
+                    first = true
+                } else {
                     first = false
-                }}
-            else if (char === '`') {
-                txt += ''
                 }
-            else {
+            } else if (char === '`') {
+                txt += ''
+            } else {
                 txt = txt + char
             }
         }
