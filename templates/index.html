@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="welcome-block">
-        <div class="welcome-string">Добро пожаловать в морскую школу!!!</div>
+        <div class="welcome-string">Добро пожаловать в морскую Школу!!!</div>
         {% if current_user.is_anonymous %}
             <a href="{{ url_for('registration') }}" class="button">Lets Go!</a>
         {% else %}
