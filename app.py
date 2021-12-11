@@ -97,7 +97,7 @@ def lesson(lesson_id):
 
 @app.route('/settings')
 def settings():
-    return render_template('', title='Settings')
+    return render_template('settings.html', title='Settings')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,24 @@
+main {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    width: 80%;
+    border: solid #000000 2px;
+    border-radius: 20px;
+    color: white;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+}
+
+.block-info {
+
+    font-size: xxx-large;
+}

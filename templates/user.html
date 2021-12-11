@@ -3,6 +3,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
 {% endblock %}
 {% block content %}
-
-
+    <div class="user-info">
+        <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename='images/Unknown_user.jpg') }}">
+        <div class="block-info">
+            <div class="name">{{ user.username }}</div>
+            <div class="another-info">{{ user.firstName }}, {{ user.secondName }}</div>
+        </div>
+    </div>
 {% endblock %}
