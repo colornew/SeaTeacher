@@ -17,7 +17,6 @@ main {
 }
 
 .welcome-block {
-
     flex-direction: column;
     height: 100%;
     width: 100%;
@@ -27,6 +26,7 @@ main {
 }
 
 .welcome-string {
+    text-align: center;
     color: #F64C72;
     font-size: 6vw;
 }
