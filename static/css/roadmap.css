@@ -1,0 +1,12 @@
+.map {
+    width: 100%;
+    height: 100%;
+    background: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.lesson-s {
+    background: no-repeat;
+    width: 300px;
+}

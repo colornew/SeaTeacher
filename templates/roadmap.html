@@ -1,1 +1,14 @@
 {% extends 'base.html' %}
+{% block custom %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/roadmap.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="map" style="background-image: url({{ url_for('static', filename='images/ип.jpg') }})">
+        {% for lesson in lessons %}
+            <a href="/lesson/{{ lesson.id }}" class="lesson-s"
+               style="background-image: url({{ url_for('static', filename='images/island.svg') }})"></a>
+        {% endfor %}
+    </div>
+{% endblock %}

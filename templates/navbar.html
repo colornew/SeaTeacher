@@ -15,6 +15,12 @@
                 <a href="/user/{{ current_user.id }}">
                     <li>Профиль</li>
                 </a>
+                <a href="{{ url_for('index') }}">
+                    <li>Сообщения</li>
+                </a>
+                <a href="{{ url_for('settings') }}">
+                    <li>Настройки</li>
+                </a>
                 <a href="{{ url_for('logout') }}">
                     <li>Выход</li>
                 </a>

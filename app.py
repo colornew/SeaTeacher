@@ -62,11 +62,8 @@ def login():
 def registration():
     register_form = Registration()
     if register_form.validate_on_submit():
-        email = register_form.email.data
-        name = register_form.username.data
-        password = register_form.password.data
-        first_name = register_form.firstName.data
-        second_name = register_form.secondName.data
+        email, name, password = register_form.email.data, register_form.username.data, register_form.password.datam
+        first_name, second_name = register_form.firstName.data, register_form.secondName.data
         existing_user = Users.query.filter_by(email=email).first()
         if existing_user:
             abort(400)
@@ -86,13 +83,21 @@ def profile(user_id):
 
 @app.route('/roadmap')
 def roadmap():
-    return render_template('roadmap.html', title='Roadmap', user=current_user)
+    lesson_list = Lesson.query.all()
+    return render_template('roadmap.html', title='Roadmap', user=current_user, lessons=lesson_list)
 
 
 @app.route('/lesson/<int:lesson_id>')
 def lesson(lesson_id):
     lessons = Lesson.query.filter_by(id=lesson_id).first()
+    if lessons is None:
+        return render_template('errors/404.html'), 403
     return render_template('lesson.html', title='Lesson', lesson_format=lessons)
+
+
+@app.route('/settings')
+def settings():
+    return render_template('', title='Settings')
 
 
 if __name__ == '__main__':
