@@ -7,7 +7,7 @@ from wtforms.widgets import TextArea, TextInput, PasswordInput, ListWidget
 class Registration(FlaskForm):
     username = StringField('Никнэйм', validators=[DataRequired()], widget=TextInput())
     firstName = StringField('Имя', validators=[DataRequired()], widget=TextInput())
-    secondName = StringField('Фамелия', validators=[DataRequired()], widget=TextInput())
+    secondName = StringField('Фамилия', validators=[DataRequired()], widget=TextInput())
     email = StringField('Почта', validators=[DataRequired(), Email()], widget=TextInput())
     password = StringField('Пароль', validators=[DataRequired()], widget=PasswordInput())
     password_confirm = StringField('Подтверждение пароля', validators=[DataRequired(), EqualTo('password')],

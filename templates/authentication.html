@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/authentication.css') }}">
+    <title>Auth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+        <form action="{{ url_for('registration') }}" method="post" novalidate>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            {{ form.csrf_token }}
+            {{ form.username }}
+            {{ form.email }}
+            {{ form.firstName }}
+            {{ form.secondName }}
+            {{ form.password }}
+            {{ form.password_confirm }}
+            <button type="submit" class="button">Регистрироваться</button>
+        </form>
+    </div>
+
+    <div class="login">
+        <form action="{{ url_for('login') }}" method="post" novalidate>
+            <label for="chk" aria-hidden="true">Login</label>
+            {{ form.csrf_token }}
+            {{ form.username }}
+            {{ form.password }}
+            <button type="submit" class="button">Авторизация</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+

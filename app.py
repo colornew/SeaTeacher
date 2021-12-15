@@ -55,7 +55,7 @@ def login():
             abort(403)
         login_user(user, remember=forms.remember_me)
         return redirect(url_for('index'))
-    return render_template('login.html', title='Login', form=forms)
+    return render_template('authentication.html', title='Login', form=forms)
 
 
 @app.route('/registration', methods=['GET', 'POST'])
