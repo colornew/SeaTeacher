@@ -2,8 +2,7 @@
     <a class="logo" href="/">SeaTeacher</a>
     {% if current_user.is_anonymous %}
         <div class="button-group">
-            <a href="{{ url_for('login') }}" class="button small">Войти</a>
-            <a href="{{ url_for('registration') }}" class="button small">Регистрироваться</a>
+            <a href="{{ url_for('authentication') }}" class="button small">Авторизоваться</a>
         </div>
     {% else %}
         <div id="menuToggle">

@@ -11,21 +11,21 @@
     <input type="checkbox" id="chk" aria-hidden="true">
 
     <div class="signup">
-        <form action="{{ url_for('registration') }}" method="post" novalidate>
+        <form action="{{ url_for('authentication') }}" method="post" novalidate>
             <label for="chk" aria-hidden="true">Sign up</label>
-            {{ form.csrf_token }}
-            {{ form.username }}
-            {{ form.email }}
-            {{ form.firstName }}
-            {{ form.secondName }}
-            {{ form.password }}
-            {{ form.password_confirm }}
+            {{ reg_form.csrf_token }}
+            {{ reg_form.username }}
+            {{ reg_form.email }}
+            {{ reg_form.firstName }}
+            {{ reg_form.secondName }}
+            {{ reg_form.password }}
+            {{ reg_form.password_confirm }}
             <button type="submit" class="button">Регистрироваться</button>
         </form>
     </div>
 
     <div class="login">
-        <form action="{{ url_for('login') }}" method="post" novalidate>
+        <form action="{{ url_for('authentication') }}" method="post" novalidate>
             <label for="chk" aria-hidden="true">Login</label>
             {{ form.csrf_token }}
             {{ form.username }}
