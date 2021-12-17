@@ -42,11 +42,12 @@ def not_found_error(error):
     return render_template('errors/404.html'), 403
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/authentication', methods=['GET', 'POST'])
+def authentication():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     forms = LoginForm()
+    register_form = Registration()
     if forms.validate_on_submit():
         nick = forms.username.data
         password = forms.password.data
@@ -55,12 +56,6 @@ def login():
             abort(403)
         login_user(user, remember=forms.remember_me)
         return redirect(url_for('index'))
-    return render_template('authentication.html', title='Login', form=forms)
-
-
-@app.route('/registration', methods=['GET', 'POST'])
-def registration():
-    register_form = Registration()
     if register_form.validate_on_submit():
         email, name, password = register_form.email.data, register_form.username.data, register_form.password.datam
         first_name, second_name = register_form.firstName.data, register_form.secondName.data
@@ -72,7 +67,7 @@ def registration():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('registration.html', form=register_form, title='Registration')
+    return render_template('authentication.html', form=forms, reg_form=register_form)
 
 
 @app.route('/user/<int:user_id>')
