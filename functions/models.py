@@ -42,5 +42,7 @@ class Achievements(db.Model):
 
 class UserAchievements(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.relationship('Users', backref=db.backref('user', lazy=True))
-    id_achievement = db.relationship('Achievements', backref=db.backref('achievement', lazy=True))
+    id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
+    id_achievement = db.Column(db.Integer, db.ForeignKey('achievements.id'))
+    user = db.relationship('Users', backref=db.backref('user', lazy=True))
+    achievement = db.relationship('Achievements', backref=db.backref('achievement', lazy=True))
