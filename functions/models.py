@@ -32,3 +32,15 @@ class Lesson(db.Model):
     text = db.Column(db.String(2048), nullable=True)
     date_create = db.Column(db.String(64))
     name = db.Column(db.String(64), index=True, unique=True)
+
+
+class Achievements(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    description = db.Column(db.String(200), nullable=True)
+
+
+class UserAchievements(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.relationship('Users', backref=db.backref('user', lazy=True))
+    id_achievement = db.relationship('Achievements', backref=db.backref('achievement', lazy=True))
