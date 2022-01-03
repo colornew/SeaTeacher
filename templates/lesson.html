@@ -4,36 +4,9 @@
 {% endblock %}
 {% block content %}
     <div class="lesson-name" id="lesson-name">{{ lesson_format.name }}</div>
-    <div class="content"></div>
+    <div class="content">{{ lesson_format.text }}</div>
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        let txt = ''
-        let count = 0
-        let first = true
-        let blockContent = document.getElementsByClassName('content')[0]
-        let text = "{{ lesson_format.text }}";
-        for (let i = 0; i < text.length + 1; i++) {
-            let cont = document.createElement('div')
-            let char = text.charAt(i)
-            if (char === '*') {
-                if (!first) {
-                    cont.className = "content-block"
-                    blockContent.appendChild(cont);
-                    cont = document.getElementsByClassName('content-block')[count]
-                    cont.innerHTML = txt
-                    count++
-                    txt = ''
-                    first = true
-                } else {
-                    first = false
-                }
-            } else if (char === '`') {
-                txt += ''
-            } else {
-                txt = txt + char
-            }
-        }
-    </script>
+    <script src="{{ url_for('static', filename='scripts/lesson.js') }}"></script>
 {% endblock %}
