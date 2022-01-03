@@ -1,4 +1,4 @@
-# SeaTeacher
+# SeaTeacheR
 
 ### Installing
 1. Create data base
