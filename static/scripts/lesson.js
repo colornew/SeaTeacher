@@ -8,15 +8,14 @@ blockContent.textContent = ''
 let style_check = false
 let cont = document.createElement('div')
 cont.className = 'content-block'
+blockContent.appendChild(cont)
 let style = ''
 for (let i = 0; i < text.length + 1; i++) {
     let char = text.charAt(i)
     if (char === '*') {
         if (first) {
-            blockContent.appendChild(cont);
             cont = document.getElementsByClassName('content-block')[count_block]
             cont.innerHTML = txt
-            count_block++
             txt = ''
             style_check = true
             first = false
@@ -27,37 +26,52 @@ for (let i = 0; i < text.length + 1; i++) {
             first = true
             st = JSON.parse(style)
             let attr = st.format
-            if (attr === 'format') {
-                    if (st[attr] === 'txt') {cont.className += ' txt'
-                        cont = document.createElement('div')
-                    }
-                    else if (st[attr] === 'photo') {cont.className += ' photo'
-                        cont = document.createElement('img')
-                    }
-                    else if (st[attr] === 'audio') {cont.className += ' audio'
-                        cont = document.createElement('audio')
-                    }
-                    else if (st[attr] === 'video') {cont.className += ' video'
-                        cont = document.createElement('video')
-                    }
-                    else {
-                        cont = document.createElement('div')
-                    }
-                    cont.className = 'content-block'
-                }
+            alert('Create')
+            if (attr === 'txt') {
+                cont = document.createElement('div')
+                cont.className = 'txt'
+
+            } else if (attr === 'photo') {
+                cont = document.createElement('img')
+                cont.className = 'photo'
+
+                let value = "{{ url_for('static', filename='images/curse/" + st.name + "') }}"
+                cont.setAttribute('src', value);
+            } else if (attr === 'audio') {
+                cont = document.createElement('audio')
+                cont.className = 'audio'
+
+            } else if (attr === 'video') {
+                cont = document.createElement('video')
+                cont.className = 'video'
+
+            } else {
+                cont = document.createElement('div')
+            }
+            cont.className += ' content-block'
+
             for (let attribute in st) {
-                if (attribute === 'size'){
-                    if (st[attribute] === '1') {cont.className += ' small'}
-                    else if (st[attribute] === '2') {cont.className += ' medium'}
-                    else if (st[attribute] === '3') {cont.className += ' large'}
+                if (attribute === 'size') {
+                    if (st[attribute] === '1') {
+                        cont.className += ' small'
+                    } else if (st[attribute] === '2') {
+                        cont.className += ' medium'
+                    } else if (st[attribute] === '3') {
+                        cont.className += ' large'
+                    }
                 }
-                if (attribute === 'color'){
-                    if (st[attribute] === 'blue') {cont.className += ' blue'}
-                    else if (st[attribute] === 'red') {cont.className += ' red'}
-                    else if (st[attribute] === 'green') {cont.className += ' green'}
+                if (attribute === 'color') {
+                    if (st[attribute] === 'blue') {
+                        cont.className += ' blue'
+                    } else if (st[attribute] === 'red') {
+                        cont.className += ' red'
+                    } else if (st[attribute] === 'green') {
+                        cont.className += ' green'
+                    }
                 }
             }
-
+            blockContent.appendChild(cont)
+            count_block++
         }
     } else if (style_check) {
         if (char === ':') {
