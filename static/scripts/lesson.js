@@ -34,8 +34,7 @@ for (let i = 0; i < text.length + 1; i++) {
             } else if (attr === 'photo') {
                 cont = document.createElement('img')
                 cont.className = 'photo'
-
-                let value = "{{ url_for('static', filename='images/curse/" + st.name + "') }}"
+                let value = "/static/images/curse/" + st.name
                 cont.setAttribute('src', value);
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
