@@ -26,23 +26,28 @@ for (let i = 0; i < text.length + 1; i++) {
             first = true
             st = JSON.parse(style)
             let attr = st.format
-            alert('Create')
             if (attr === 'txt') {
                 cont = document.createElement('div')
                 cont.className = 'txt'
-
             } else if (attr === 'photo') {
                 cont = document.createElement('img')
                 cont.className = 'photo'
-                let value = "/static/images/curse/" + st.name
+                let value = "/static/images/curse/" + st.source
                 cont.setAttribute('src', value);
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
                 cont.className = 'audio'
-
+                let value = "/static/audio/curse/" + st.source
+                cont.controls = 'controls'
+                cont.type = 'audio/mpeg'
+                cont.setAttribute('src', value);
             } else if (attr === 'video') {
                 cont = document.createElement('video')
                 cont.className = 'video'
+                let sourceMP4 = document.createElement("source");
+                sourceMP4.type = "video/mp4";
+                sourceMP4.src = "/static/video/curse/" + st.source;
+                cont.appendChild(sourceMP4);
 
             } else {
                 cont = document.createElement('div')
