@@ -10,6 +10,7 @@ let cont = document.createElement('div')
 cont.className = 'content-block'
 blockContent.appendChild(cont)
 let style = ''
+let color;
 for (let i = 0; i < text.length + 1; i++) {
     let char = text.charAt(i)
     if (char === '*') {
@@ -65,12 +66,10 @@ for (let i = 0; i < text.length + 1; i++) {
                     }
                 }
                 if (attribute === 'color') {
-                    if (st[attribute] === 'blue') {
-                        cont.className += ' blue'
-                    } else if (st[attribute] === 'red') {
-                        cont.className += ' red'
-                    } else if (st[attribute] === 'green') {
-                        cont.className += ' green'
+                    if (st[attribute].charAt(0) === 'r' && st[attribute].charAt(1) === 'g')
+                        cont.style.color = st.color.replaceAll('.', ',')
+                    else {
+                        cont.style.color = st.color
                     }
                 }
             }
