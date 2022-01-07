@@ -30,11 +30,20 @@ for (let i = 0; i < text.length + 1; i++) {
             if (attr === 'txt') {
                 cont = document.createElement('div')
                 cont.className = 'txt'
+                cont.className += ' content-block'
+                blockContent.appendChild(cont)
+                count_block++
             } else if (attr === 'photo') {
-                cont = document.createElement('img')
+                cont = document.createElement('div')
                 cont.className = 'photo'
+                cont.className += ' content-block'
+                blockContent.appendChild(cont)
+                count_block++
+                let sourcePhoto = document.createElement("img");
                 let value = "/static/images/curse/" + st.source
-                cont.setAttribute('src', value);
+                sourcePhoto.setAttribute('src', value);
+                let el = document.getElementsByClassName('content-block')[count_block]
+                el.appendChild(sourcePhoto);
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
                 cont.className = 'audio'
@@ -42,19 +51,27 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.controls = 'controls'
                 cont.type = 'audio/mpeg'
                 cont.setAttribute('src', value);
+                cont.className += ' content-block'
+                blockContent.appendChild(cont)
+                count_block++
             } else if (attr === 'video') {
                 cont = document.createElement('video')
                 cont.className = 'video'
+                cont.className += ' content-block'
+                blockContent.appendChild(cont)
+                count_block++
                 let sourceMP4 = document.createElement("source");
                 sourceMP4.type = "video/mp4";
                 sourceMP4.src = "/static/video/curse/" + st.source;
-                cont.appendChild(sourceMP4);
+                let el = document.getElementsByClassName('content-block')[count_block]
+                el.appendChild(sourceMP4);
 
             } else {
                 cont = document.createElement('div')
+                cont.className += ' content-block'
+                blockContent.appendChild(cont)
+                count_block++
             }
-            cont.className += ' content-block'
-
             for (let attribute in st) {
                 if (attribute === 'size') {
                     if (st[attribute] === '1') {
@@ -66,15 +83,17 @@ for (let i = 0; i < text.length + 1; i++) {
                     }
                 }
                 if (attribute === 'color') {
-                    if (st[attribute].charAt(0) === 'r' && st[attribute].charAt(1) === 'g')
-                        cont.style.color = st.color.replaceAll('.', ',')
-                    else {
+                    if (st[attribute].charAt(0) === 'r' && st[attribute].charAt(1) === 'g') {
+                        color = st.color.replaceAll('.', ',')
+                        if (st.format === 'txt') {cont.style.color = color}
+                        else if (st.format === 'photo'){
+                            cont.style.border += color
+                        }
+                    } else {
                         cont.style.color = st.color
                     }
                 }
             }
-            blockContent.appendChild(cont)
-            count_block++
         }
     } else if (style_check) {
         if (char === ':') {
