@@ -31,14 +31,12 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont = document.createElement('div')
                 cont.className = 'txt'
                 cont.className += ' content-block'
-                blockContent.appendChild(cont)
             } else if (attr === 'photo') {
                 let sourcePhoto = document.createElement("img");
                 let value = "/static/images/curse/" + st.source
                 sourcePhoto.setAttribute('src', value);
                 sourcePhoto.className = 'photo'
                 sourcePhoto.className += ' content-block'
-                blockContent.appendChild(sourcePhoto)
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
                 cont.className = 'audio'
@@ -47,12 +45,10 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.type = 'audio/mpeg'
                 cont.setAttribute('src', value);
                 cont.className += ' content-block'
-                blockContent.appendChild(cont)
             } else if (attr === 'video') {
                 cont = document.createElement('video')
-                cont.className = 'video'
-                cont.className += ' content-block'
-                blockContent.appendChild(cont)
+                cont.className = 'video content-block';
+                blockContent.appendChild(cont);
                 let sourceMP4 = document.createElement("source");
                 sourceMP4.type = "video/mp4";
                 sourceMP4.src = "/static/video/curse/" + st.source;
@@ -60,9 +56,7 @@ for (let i = 0; i < text.length + 1; i++) {
             } else {
                 cont = document.createElement('div')
                 cont.className += ' content-block'
-                blockContent.appendChild(cont)
             }
-            if (i !== 0){count_block++}
             cont = document.getElementsByClassName('content-block')[count_block]
             for (let attribute in st) {
                 if (attribute === 'size') {
@@ -74,18 +68,31 @@ for (let i = 0; i < text.length + 1; i++) {
                         cont.className += ' large'
                     }
                 }
-                if (attribute === 'color') {
+                else if (attribute === 'color') {
                     if (st[attribute].charAt(0) === 'r' && st[attribute].charAt(1) === 'g') {
                         color = st.color.replaceAll('.', ',')
-                        if (st.format === 'txt') {cont.style.color = color}
-                        else if (st.format === 'photo'){
-                            cont.style.border += color
+                    }
+                    else {
+                        color = st.color
+                    }
+                    if (st.format === 'txt') {
+                        cont.style.color = color
+                    } else if (st.format === 'photo') {
+                        cont.style.border += color
+                    }
+                }
+                else if (attribute === 'font') {
+                    if (st.format === 'txt'){
+                        if (st.font === 'italic'){
+                            cont.style.fontStyle = 'italic'
                         }
-                    } else {
-                        cont.style.color = st.color
+                        else if (st.font === 'fat') {
+                            cont.style.fontWeight = 'bold'
+                        }
                     }
                 }
             }
+            blockContent.appendChild(cont)
         }
     } else if (style_check) {
         if (char === ':') {
