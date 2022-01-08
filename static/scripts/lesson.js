@@ -16,7 +16,7 @@ for (let i = 0; i < text.length + 1; i++) {
     if (char === '*') {
         if (first) {
             cont = document.getElementsByClassName('content-block')[count_block]
-            cont.innerHTML = txt
+            if (txt !== '') {cont.innerHTML = txt}
             txt = ''
             style_check = true
             first = false
@@ -48,16 +48,25 @@ for (let i = 0; i < text.length + 1; i++) {
             } else if (attr === 'video') {
                 cont = document.createElement('video')
                 cont.className = 'video content-block';
-                blockContent.appendChild(cont);
                 let sourceMP4 = document.createElement("source");
                 sourceMP4.type = "video/mp4";
                 sourceMP4.src = "/static/video/curse/" + st.source;
                 cont.appendChild(sourceMP4);
+            } else if (st.format === 'list') {
+                cont = document.createElement('ul');
+                cont.className = 'list content-block';
+                let list = st.list.split('.')
+                for (let elem in list) {
+                    let li = document.createElement('li');
+                    li.setAttribute('class', 'item');
+                    li.appendChild(document.createTextNode(list[elem]))
+                    cont.appendChild(li);
+                }
             } else {
                 cont = document.createElement('div')
                 cont.className += ' content-block'
             }
-            cont = document.getElementsByClassName('content-block')[count_block]
+            count_block ++
             for (let attribute in st) {
                 if (attribute === 'size') {
                     if (st[attribute] === '1') {
@@ -67,12 +76,10 @@ for (let i = 0; i < text.length + 1; i++) {
                     } else if (st[attribute] === '3') {
                         cont.className += ' large'
                     }
-                }
-                else if (attribute === 'color') {
+                } else if (attribute === 'color') {
                     if (st[attribute].charAt(0) === 'r' && st[attribute].charAt(1) === 'g') {
                         color = st.color.replaceAll('.', ',')
-                    }
-                    else {
+                    } else {
                         color = st.color
                     }
                     if (st.format === 'txt') {
@@ -80,19 +87,18 @@ for (let i = 0; i < text.length + 1; i++) {
                     } else if (st.format === 'photo') {
                         cont.style.border += color
                     }
-                }
-                else if (attribute === 'font') {
-                    if (st.format === 'txt'){
-                        if (st.font === 'italic'){
+                } else if (attribute === 'font') {
+                    if (st.format === 'txt') {
+                        if (st.font === 'italic') {
                             cont.style.fontStyle = 'italic'
-                        }
-                        else if (st.font === 'fat') {
+                        } else if (st.font === 'fat') {
                             cont.style.fontWeight = 'bold'
                         }
                     }
                 }
             }
             blockContent.appendChild(cont)
+
         }
     } else if (style_check) {
         if (char === ':') {
