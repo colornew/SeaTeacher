@@ -16,14 +16,30 @@
     font-size: xxx-large;
 }
 
+.content-block {
+    margin: 10px 0 0 0;
+}
+
 main {
     flex-direction: column;
     display: flex;
     align-items: center;
 }
 
-.photo, .small{
+.photo.small{
     width:10vw;
     height: 10vh;
+
+}
+
+.photo.medium{
+    width:20vw;
+    height: 20vh;
+
+}
+
+.photo.large{
+    width:30vw;
+    height: 30vh;
 
 }

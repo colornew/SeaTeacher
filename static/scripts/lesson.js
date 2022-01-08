@@ -32,18 +32,13 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.className = 'txt'
                 cont.className += ' content-block'
                 blockContent.appendChild(cont)
-                count_block++
             } else if (attr === 'photo') {
-                cont = document.createElement('div')
-                cont.className = 'photo'
-                cont.className += ' content-block'
-                blockContent.appendChild(cont)
                 let sourcePhoto = document.createElement("img");
                 let value = "/static/images/curse/" + st.source
                 sourcePhoto.setAttribute('src', value);
-                let el = document.getElementsByClassName('content-block')[count_block]
-                el.appendChild(sourcePhoto);
-                count_block++
+                sourcePhoto.className = 'photo'
+                sourcePhoto.className += ' content-block'
+                blockContent.appendChild(sourcePhoto)
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
                 cont.className = 'audio'
@@ -53,7 +48,6 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.setAttribute('src', value);
                 cont.className += ' content-block'
                 blockContent.appendChild(cont)
-                count_block++
             } else if (attr === 'video') {
                 cont = document.createElement('video')
                 cont.className = 'video'
@@ -62,15 +56,14 @@ for (let i = 0; i < text.length + 1; i++) {
                 let sourceMP4 = document.createElement("source");
                 sourceMP4.type = "video/mp4";
                 sourceMP4.src = "/static/video/curse/" + st.source;
-                let el = document.getElementsByClassName('content-block')[count_block]
-                el.appendChild(sourceMP4);
-                count_block++
+                cont.appendChild(sourceMP4);
             } else {
                 cont = document.createElement('div')
                 cont.className += ' content-block'
                 blockContent.appendChild(cont)
-                count_block++
             }
+            if (i !== 0){count_block++}
+            cont = document.getElementsByClassName('content-block')[count_block]
             for (let attribute in st) {
                 if (attribute === 'size') {
                     if (st[attribute] === '1') {
