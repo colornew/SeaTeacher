@@ -1,5 +1,5 @@
 header {
-    color: black;
+    color: var(--main-font);
     text-decoration: none;
     font-size: xx-large;
     align-items: center;
@@ -18,7 +18,7 @@ header .button {
 }
 
 .logo {
-    color: #F64C72;
+    color: #deeaf7;
     text-decoration: none;
     display: block;
     font-family: Tahoma, 'sans-serif';
@@ -33,7 +33,7 @@ header .button-group {
     transition: transform .3s;
     text-decoration: none;
     display: flex;
-    color: white;
+    color: var(--main-font);
 }
 
 header .button {
@@ -45,14 +45,14 @@ header .nickname {
     margin-right: 20px;
     display: block;
     font-size: xxx-large;
-    color: #F64C72;
+    color: var(--main-font);
     text-decoration: none;
 }
 
 
 a {
     text-decoration: none;
-    color: #F64C72;
+    color: var(--main-font);
     transition: color 0.3s ease;
 }
 
@@ -64,9 +64,11 @@ a {
     -webkit-user-select: none;
     user-select: none;
 }
-#menuToggle ul a{
+
+#menuToggle ul a {
     background: rgba(0, 0, 0, 0.2);
 }
+
 #menuToggle input {
     display: block;
     width: 40px;

@@ -1,3 +1,8 @@
+:root {
+    --main-font: #deeaf7;
+}
+
+
 body {
     font-family: Tahoma, 'sans-serif';
     overflow-y: hidden;
@@ -6,7 +11,7 @@ body {
 }
 
 .page {
-    background: #2F2FA2;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     width: 100vw;
     height: 100vh;
 }
@@ -27,7 +32,7 @@ main {
 
 .welcome-string {
     text-align: center;
-    color: #F64C72;
+    color: var(--main-font);
     font-size: 6vw;
 }
 
@@ -45,5 +50,5 @@ main .button {
 
 .error {
     font-size: xxx-large;
-    color: #F64C72;
+    color: #fff;
 }
