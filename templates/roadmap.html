@@ -5,10 +5,15 @@
 
 
 {% block content %}
-    <div class="map" style="background-image: url({{ url_for('static', filename='images/ип.jpg') }})">
+    <div class="map" style="background: url({{ url_for('static', filename='images/ип.jpg') }})">
         {% for lesson in lessons %}
-            <a href="/lesson/{{ lesson.id }}" class="lesson-s"
+            <a href="/lesson/{{ lesson.id }}" class="lesson-s island-block"
                style="background-image: url({{ url_for('static', filename='images/island.svg') }})"></a>
         {% endfor %}
     </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/roadmap.js') }}"></script>
 {% endblock %}
