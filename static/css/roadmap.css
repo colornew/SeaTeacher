@@ -7,7 +7,8 @@
 }
 
 .lesson-s {
+    width: 300px;
+    height: 300px;
     margin-left: 10px;
     background: no-repeat;
-    width: 300px;
 }

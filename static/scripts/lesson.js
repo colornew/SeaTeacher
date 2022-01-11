@@ -32,11 +32,11 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.className = 'txt'
                 cont.className += ' content-block'
             } else if (attr === 'photo') {
-                let sourcePhoto = document.createElement("img");
+                cont = document.createElement("img");
                 let value = "/static/images/curse/" + st.source
-                sourcePhoto.setAttribute('src', value);
-                sourcePhoto.className = 'photo'
-                sourcePhoto.className += ' content-block'
+                cont.setAttribute('src', value);
+                cont.className = 'photo'
+                cont.className += ' content-block'
             } else if (attr === 'audio') {
                 cont = document.createElement('audio')
                 cont.className = 'audio'
@@ -97,6 +97,7 @@ for (let i = 0; i < text.length + 1; i++) {
                     }
                 }
             }
+            alert(cont.innerHTML)
             blockContent.appendChild(cont)
 
         }
