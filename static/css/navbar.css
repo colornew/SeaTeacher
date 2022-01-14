@@ -1,4 +1,5 @@
 header {
+    background: rgba(0, 0, 0, 0.3);
     color: var(--main-font);
     text-decoration: none;
     font-size: xx-large;
@@ -130,7 +131,7 @@ a {
     margin: -100px 0 0 0;
     padding: 125px 50px 50px;
     right: -100px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.5);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;

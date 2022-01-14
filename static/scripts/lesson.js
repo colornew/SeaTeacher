@@ -97,7 +97,6 @@ for (let i = 0; i < text.length + 1; i++) {
                     }
                 }
             }
-            alert(cont.innerHTML)
             blockContent.appendChild(cont)
 
         }
@@ -113,3 +112,5 @@ for (let i = 0; i < text.length + 1; i++) {
         txt += char
     }
 }
+
+
