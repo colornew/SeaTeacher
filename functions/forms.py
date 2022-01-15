@@ -12,6 +12,7 @@ class Registration(FlaskForm):
     password = StringField('Пароль', validators=[DataRequired()], widget=PasswordInput(), render_kw={"placeholder": "Пароль"})
     password_confirm = StringField('Подтверждение пароля', validators=[DataRequired(), EqualTo('password')],
                                    widget=PasswordInput(), render_kw={"placeholder": "Повторите пароль"})
+    register = SubmitField('Регистрация')
 
 
 class LoginForm(FlaskForm):

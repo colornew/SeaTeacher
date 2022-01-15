@@ -48,7 +48,7 @@ def authentication():
         return redirect(url_for('index'))
     forms = LoginForm()
     register_form = Registration()
-    if forms.validate_on_submit():
+    if forms.validate_on_submit() and register_form.email.data is None:
         nick = forms.username.data
         password = forms.password.data
         user = Users.query.filter_by(username=nick).first()
@@ -56,8 +56,9 @@ def authentication():
             abort(403)
         login_user(user, remember=forms.remember_me)
         return redirect(url_for('index'))
-    if register_form.validate_on_submit():
-        email, name, password = register_form.email.data, register_form.username.data, register_form.password.datam
+    elif register_form.validate_on_submit() and register_form.username.data:
+        print(1)
+        email, name, password = register_form.email.data, register_form.username.data, register_form.password.data
         first_name, second_name = register_form.firstName.data, register_form.secondName.data
         existing_user = Users.query.filter_by(email=email).first()
         if existing_user:
