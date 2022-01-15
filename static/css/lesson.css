@@ -13,6 +13,7 @@
 }
 
 .lesson-name {
+    margin: 10px;
     color: var(--main-font);
     font-size: xxx-large;
 }
