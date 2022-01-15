@@ -6,7 +6,7 @@
     <div class="user-info">
         <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename='images/Unknown_user.jpg') }}">
         <div class="block-info">
-            <div class="name">{{ user.username }}</div>
+            <div class="name">{{ user.username }}, {{ user.get_rating() }}</div>
             <div class="another-info">{{ user.firstName }}, {{ user.secondName }}</div>
         </div>
     </div>

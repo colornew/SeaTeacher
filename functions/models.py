@@ -23,6 +23,16 @@ class Users(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def get_rating(self):
+        users = self.query.order_by(Users.score.desc()).all()
+        n = 1
+        for user in users:
+            if user.username == self.username:
+                return n
+            else:
+                n += 1
+        return None
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
