@@ -5,27 +5,27 @@
             <a href="{{ url_for('authentication') }}" class="button small">Авторизоваться</a>
         </div>
     {% else %}
-        <nav role='navigation'>
-            <div id="menuToggle">
-                <input type="checkbox"/>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="menu">
-                    <a href="/user/{{ current_user.id }}">
-                        <li>Профиль</li>
-                    </a>
-                    <a href="{{ url_for('index') }}">
-                        <li>Сообщество</li>
-                    </a>
-                    <a href="{{ url_for('settings') }}">
-                        <li>Настройки</li>
-                    </a>
-                    <a href="{{ url_for('logout') }}">
-                        <li>Выход</li>
-                    </a>
-                </ul>
-            </div>
-        </nav>
+        <div class="menu">
+            <input class="menu_input" name="menu" type="radio" id="btn1">
+            <label class="menu_label" for="btn1">
+                <div class="fa fa-user"></div>
+                <div class="menu_text">Профиль</div>
+            </label>
+            <input class="menu_input" name="menu" type="radio" id="btn2">
+            <label class="menu_label" for="btn2">
+                <div class="fa fa-comments"></div>
+                <div class="menu_text">Сообщество</div>
+            </label>
+            <input class="menu_input" name="menu" type="radio" id="btn3">
+            <label class="menu_label" for="btn3">
+                <div class="fa fa-cog"></div>
+                <div class="menu_text">Настройки</div>
+            </label>
+            <input class="menu_input" name="menu" type="radio" id="btn4">
+            <label class="menu_label" for="btn4">
+                <div class="fa fa-sign-out"></div>
+                <div class="menu_text">Выход</div>
+            </label>
+        </div>
     {% endif %}
 </header>
