@@ -57,7 +57,6 @@ def authentication():
         login_user(user, remember=forms.remember_me)
         return redirect(url_for('index'))
     elif register_form.validate_on_submit() and register_form.username.data:
-        print(1)
         email, name, password = register_form.email.data, register_form.username.data, register_form.password.data
         first_name, second_name = register_form.firstName.data, register_form.secondName.data
         existing_user = Users.query.filter_by(email=email).first()
@@ -67,7 +66,9 @@ def authentication():
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('index'))
+        user = Users.query.filter_by(username=name).first()
+        login_user(user, remember=forms.remember_me)
+        return redirect(url_for('roadmap'))
     return render_template('authentication.html', form=forms, reg_form=register_form)
 
 
