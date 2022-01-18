@@ -52,10 +52,14 @@ def authentication():
         nick = forms.username.data
         password = forms.password.data
         user = Users.query.filter_by(username=nick).first()
+        user_mail = Users.query.filter_by(email=nick).first()
         if not (user and user.check_password(password)):
+            if user_mail and user_mail.check_password(password):
+                login_user(user_mail, remember=forms.remember_me)
+                return redirect(url_for('roadmap'))
             abort(403)
         login_user(user, remember=forms.remember_me)
-        return redirect(url_for('index'))
+        return redirect(url_for('roadmap'))
     elif register_form.validate_on_submit() and register_form.username.data:
         email, name, password = register_form.email.data, register_form.username.data, register_form.password.data
         first_name, second_name = register_form.firstName.data, register_form.secondName.data
