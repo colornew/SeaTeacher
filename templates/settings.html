@@ -5,6 +5,11 @@
 {% endblock %}
 {% block content %}
     <div class="settings">
-
+        <form action="{{ url_for('settings') }}" method="post" novalidate>
+            {{ form.csrf_token }}
+            {{ form.username }}
+            {{ form.image }}
+            <button type="submit" class="button">Изменить</button>
+        </form>
     </div>
 {% endblock %}

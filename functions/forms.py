@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, BooleanField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, NumberRange
-from wtforms.widgets import TextArea, TextInput, PasswordInput, ListWidget
+from wtforms.widgets import TextArea, TextInput, PasswordInput, ListWidget, FileInput
+from flask_wtf.file import FileField, FileRequired
 
 
 class Registration(FlaskForm):
@@ -24,4 +25,5 @@ class LoginForm(FlaskForm):
 
 class Settings(FlaskForm):
     username = StringField('Никнэйм', widget=TextInput())
+    image = FileField(validators=[FileRequired()])
     submit = SubmitField('Изменить')

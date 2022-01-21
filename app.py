@@ -96,9 +96,14 @@ def lesson(lesson_id):
     return render_template('lesson.html', title='Lesson', lesson_format=lessons)
 
 
-@app.route('/settings')
+@app.route('/settings', methods=['GET', 'POST'])
 def settings():
-    return render_template('settings.html', title='Settings')
+    forms = Settings()
+    if forms.validate_on_submit():
+        user = ''
+        image, username = forms.image.data, forms.username.data
+        print(image, username, type(image))
+    return render_template('settings.html', title='Settings', form=forms)
 
 
 if __name__ == '__main__':
