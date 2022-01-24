@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 
 class Users(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     firstName = db.Column(db.String(255), index=True, nullable=True)
@@ -16,6 +16,7 @@ class Users(db.Model, UserMixin):
     is_admin = db.Column(db.Boolean, default=False)
     score = db.Column(db.Integer, default=0)
     class_user = db.Column(db.Integer, default=5)
+    image_url = db.Column(db.String(255), default='uk.jpg')
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -38,20 +39,20 @@ class Users(db.Model, UserMixin):
 
 
 class Lesson(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     text = db.Column(db.String(2048), nullable=True)
     date_create = db.Column(db.String(64))
     name = db.Column(db.String(64), index=True, unique=True)
 
 
 class Achievements(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(200), nullable=True)
 
 
 class UserAchievements(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
     id_achievement = db.Column(db.Integer, db.ForeignKey('achievements.id'))
     user = db.relationship('Users', backref=db.backref('user', lazy=True))
