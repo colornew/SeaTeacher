@@ -1,7 +1,7 @@
 header {
     background: rgba(0, 0, 0, 0.3);
     color: var(--main-font);
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: xx-large;
     align-items: center;
     justify-content: space-between;
@@ -52,8 +52,8 @@ header .nickname {
 
 
 a {
-    text-decoration: none;
-    color: var(--main-font);
+    text-decoration: none !important;
+    color: var(--main-font) !important;
     transition: color 0.3s ease;
 }
 

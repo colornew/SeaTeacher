@@ -102,11 +102,19 @@ def settings():
     settings = Settings()
     if settings.is_submitted():
         image, username = settings.image.data, settings.username.data
-        filename = secure_filename(image.filename)
-        filename = str(current_user.id) + '.' + filename.split('.')[1]
-        image.save(os.path.join(
-            app.instance_path[0:-9], 'static\\images\\users', filename
-        ))
+        if settings.image.validate(Settings):
+            filename = secure_filename(image.filename)
+            filename = str(current_user.id) + '.' + filename.split('.')[1]
+            image.save(os.path.join(
+                app.instance_path[0:-9], 'static\\images\\users', filename
+            ))
+        existing_user = Users.query.filter_by(username=username).first()
+        if existing_user:
+            flash('Человекс с таким именем уже есть')
+        else:
+            if username != '':
+                current_user.username = username
+                db.session.commit()
         return redirect(url_for('roadmap'))
     return render_template('settings.html', title='Settings', form=settings)
 

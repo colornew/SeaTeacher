@@ -31,5 +31,8 @@ class LoginForm(FlaskForm):
 
 class Settings(FlaskForm):
     username = StringField('Никнэйм', widget=TextInput())
-    image = FileField(validators=[FileRequired()])
+    image = FileField('image', validators=[
+        FileRequired(),
+        FileAllowed(['jpg', 'png'], 'Images only!')
+    ])
     submit = SubmitField('Изменить')
