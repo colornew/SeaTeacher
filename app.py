@@ -80,7 +80,8 @@ def authentication():
 @app.route('/user/<int:user_id>')
 def profile(user_id):
     user = Users.query.filter_by(id=user_id).first()
-    return render_template('user.html', title=user.username, user=user)
+    image = 'images/users/'+user.image_url
+    return render_template('user.html', title=user.username, user=user, url_img=image)
 
 
 @app.route('/roadmap')

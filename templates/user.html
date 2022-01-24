@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
     <div class="user-info">
-        <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename='images/uk.jpg') }}">
+        <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename=url_img) }}">
         <div class="block-info">
             <div class="name">{{ user.username }}</div>
             <div class="another-info">{{ user.firstName }} {{ user.secondName }}</div>
