@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, flash
-from os import environ
+import os
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from functions.models import Users, db, Lesson
 from functions.forms import *
 from cfg import *
 from flask_migrate import Migrate
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
@@ -98,12 +99,16 @@ def lesson(lesson_id):
 
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
-    forms = Settings()
-    if forms.validate_on_submit():
-        user = ''
-        image, username = forms.image.data, forms.username.data
-        print(image, username, type(image))
-    return render_template('settings.html', title='Settings', form=forms)
+    settings = Settings()
+    if settings.is_submitted():
+        image, username = settings.image.data, settings.username.data
+        filename = secure_filename(image.filename)
+        filename = str(current_user.id) + '.' + filename.split('.')[1]
+        image.save(os.path.join(
+            app.instance_path[0:-9], 'static\\images\\users', filename
+        ))
+        return redirect(url_for('roadmap'))
+    return render_template('settings.html', title='Settings', form=settings)
 
 
 if __name__ == '__main__':

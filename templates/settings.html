@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
     <div class="settings">
-        <form action="{{ url_for('settings') }}" method="post" novalidate>
+        <form action="{{ url_for('settings') }}" enctype="multipart/form-data" method="post" novalidate>
             {{ form.csrf_token }}
             <div class="block-form">
                 <p>{{ form.username.label }}</p>
@@ -17,7 +17,6 @@
                 <label for="formFile" class="form-label">{{ form.image.label }}</label>
                 {{ form.image(class_='form-control') }}
             </div>
-
             <button type="submit" class="btn btn-primary">Изменить</button>
         </form>
     </div>
