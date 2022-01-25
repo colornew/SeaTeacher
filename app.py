@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = S_KEY
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max file size = 16 megaByte
 db.init_app(app)
 login = LoginManager(app)
 login.init_app(app)
@@ -80,8 +81,9 @@ def authentication():
 @app.route('/user/<int:user_id>')
 def profile(user_id):
     user = Users.query.filter_by(id=user_id).first()
-    image = 'images/users/'+user.image_url
-    return render_template('user.html', title=user.username, user=user, url_img=image)
+    image = 'images/users/' + user.image_url
+    achievements = user.get_achievement_list()
+    return render_template('user.html', title=user.username, user=user, url_img=image, achievements_list=achievements)
 
 
 @app.route('/roadmap')

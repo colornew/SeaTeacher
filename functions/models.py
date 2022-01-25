@@ -34,6 +34,14 @@ class Users(db.Model, UserMixin):
                 n += 1
         return None
 
+    def get_achievement_list(self):
+        user_to_achievement = self.achievement
+        achievements = []
+        for achievement in user_to_achievement:
+            ida = achievement.id_achievement
+            achievements.append(Achievements.query.filter_by(id=ida).first())
+        return achievements
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
@@ -55,5 +63,5 @@ class UserAchievements(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
     id_achievement = db.Column(db.Integer, db.ForeignKey('achievements.id'))
-    user = db.relationship('Users', backref=db.backref('user', lazy=True))
-    achievement = db.relationship('Achievements', backref=db.backref('achievement', lazy=True))
+    user = db.relationship('Users', backref=db.backref('achievement', lazy=True))
+    achievement = db.relationship('Achievements', backref=db.backref('user', lazy=True))
