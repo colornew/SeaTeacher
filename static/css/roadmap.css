@@ -7,8 +7,18 @@
 }
 
 .lesson-s {
+    align-items: center;
+    justify-content: center;
+    display: flex;
     width: 300px;
     height: 300px;
     margin-left: 10px;
     background: no-repeat;
+}
+
+
+.descr {
+    font-size: xx-large;
+    color: var(--main-font);
+    display: none;
 }
