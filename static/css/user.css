@@ -1,4 +1,5 @@
 main {
+    overflow-y: auto;
     justify-content: space-around;
     flex-direction: column;
     display: flex;
@@ -24,3 +25,23 @@ main {
 .block-info {
     font-size: xxx-large;
 }
+
+.achievement {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin-left: 10px;
+    background: no-repeat;
+}
+
+.achievement-list {
+
+    display: flex;
+    width: 80%;
+    border: solid #000000 2px;
+    border-radius: 20px;
+    color: white;
+}
+

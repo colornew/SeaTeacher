@@ -12,6 +12,9 @@
         </div>
     </div>
     <div class="achievement-list">
-
+        {% for achievement in achievements_list %}
+            <div class="achievement"
+                 style="background-image: url({{ url_for('static', filename='images/achievement/'+achievement.id|string+'.jpg') }})"></div>
+        {% endfor %}
     </div>
 {% endblock %}
