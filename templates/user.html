@@ -3,18 +3,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
 {% endblock %}
 {% block content %}
-    <div class="user-info">
-        <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename=url_img) }}">
-        <div class="block-info">
-            <div class="name">{{ user.username }}</div>
-            <div class="another-info">{{ user.firstName }} {{ user.secondName }}</div>
-            <div class="another-info">Рейтинг пользователя: {{ user.get_rating() }}</div>
+    <page class="slide-bar">
+        <div class="information">
+            <div class="user-info">
+                <img class="avatar" alt="тут был аватар" src="{{ url_for('static', filename=url_img) }}">
+                <div class="block-info">
+                    <div class="name">{{ user.username }}</div>
+                    <div class="another-info">{{ user.firstName }} {{ user.secondName }}</div>
+                    <div class="another-info">Рейтинг пользователя: {{ user.get_rating() }}</div>
+                </div>
+
+            </div>
+            <div class="achievement-list">
+                {% for achievement in achievements_list %}
+                    <img class="achievement" alt="тут была ачивка"
+                         src="{{ url_for('static', filename='images/achievement/'+achievement.id|string+'.png') }} ">
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    <div class="achievement-list">
-        {% for achievement in achievements_list %}
-            <div class="achievement"
-                 style="background-image: url({{ url_for('static', filename='images/achievement/'+achievement.id|string+'.jpg') }})"></div>
-        {% endfor %}
-    </div>
+    </page>
+
 {% endblock %}

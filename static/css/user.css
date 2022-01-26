@@ -1,17 +1,33 @@
 main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
-    justify-content: space-around;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
+
 }
 
-.user-info {
+page {
+    justify-content: center;
     display: flex;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.information {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
     width: 80%;
     border: solid #000000 2px;
     border-radius: 20px;
-    color: white;
+}
+
+
+.user-info {
+    align-items: center;
+    display: flex;
 }
 
 .avatar {
@@ -27,6 +43,9 @@ main {
 }
 
 .achievement {
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -37,11 +56,7 @@ main {
 }
 
 .achievement-list {
-
     display: flex;
-    width: 80%;
-    border: solid #000000 2px;
-    border-radius: 20px;
     color: white;
 }
 
