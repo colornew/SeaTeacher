@@ -11,6 +11,7 @@
     </div>
     <div class="lesson-name" id="lesson-name">{{ lesson_format.name }}</div>
     <div class="content">{{ lesson_format.text }}</div>
+    <a href="{{ '../test/'+lesson_format.id|string }}" class="test-button">ТЕСТ!!!</a>
 {% endblock %}
 
 {% block scripts %}

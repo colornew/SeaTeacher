@@ -119,3 +119,11 @@ main {
     display: flex;
     align-items: flex-start;
 }
+
+.test-button {
+    transition: transform .3s;
+    text-decoration: none;
+    display: block;
+    border: #F64C72 6px solid;
+    border-radius: 12vh;
+}

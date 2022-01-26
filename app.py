@@ -130,5 +130,13 @@ def admin():
         return render_template('errors/403.html'), 403
 
 
+@app.route('/test/<int:test_id>', methods=['GET', 'POST'])
+def testing(test_id):
+    if current_user.is_authenticated:
+        return 'You are'
+    else:
+        return render_template('errors/403.html'), 403
+
+
 if __name__ == '__main__':
     app.run()
