@@ -102,10 +102,10 @@ def lesson(lesson_id):
 
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
-    settings = Settings()
-    if settings.is_submitted():
-        image, username = settings.image.data, settings.username.data
-        if settings.image.validate(Settings):
+    setting = Settings()
+    if setting.is_submitted():
+        image, username = setting.image.data, setting.username.data
+        if setting.image.validate(Settings):
             filename = secure_filename(image.filename)
             filename = str(current_user.id) + '.' + filename.split('.')[1]
             image.save(os.path.join(
@@ -119,7 +119,7 @@ def settings():
                 current_user.username = username
                 db.session.commit()
         return redirect(url_for('roadmap'))
-    return render_template('settings.html', title='Settings', form=settings)
+    return render_template('settings.html', title='Settings', form=setting)
 
 
 @app.route('/admin', methods=['GET', 'POST'])

@@ -3,6 +3,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson.css') }}">
 {% endblock %}
 {% block content %}
+    <div class="nav-lesson">
+        <a type="button" class="btn-close" href="{{ url_for('roadmap') }}">
+            <span class="icon-cross"></span>
+            <span class="visually-hidden">Close</span>
+        </a>
+    </div>
     <div class="lesson-name" id="lesson-name">{{ lesson_format.name }}</div>
     <div class="content">{{ lesson_format.text }}</div>
 {% endblock %}

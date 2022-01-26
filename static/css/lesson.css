@@ -28,24 +28,94 @@ main {
     align-items: center;
 }
 
-.photo.small{
-    width:10vw;
+.photo.small {
+    width: 10vw;
     height: 10vh;
 
 }
 
-.photo.medium{
-    width:20vw;
+.photo.medium {
+    width: 20vw;
     height: 20vh;
 
 }
 
-.photo.large{
-    width:30vw;
+.photo.large {
+    width: 30vw;
     height: 30vh;
 
 }
 
 .video {
     width: 100%;
+}
+
+.btn-close {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(0, 102, 255, 0.57);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+}
+
+.btn-close .icon-cross {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.btn-close .icon-cross:before, .btn-close .icon-cross:after {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.btn-close .icon-cross:before {
+    transform: rotate(45deg);
+}
+
+.btn-close .icon-cross:after {
+    transform: rotate(-45deg);
+}
+
+.btn-close .icon-cross span {
+    display: block;
+}
+
+.btn-close:hover, .btn-close:focus {
+    transform: rotateZ(90deg);
+    background: rgba(0, 82, 204, 0.49);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+.nav-lesson {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
 }
