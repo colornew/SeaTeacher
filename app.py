@@ -122,5 +122,13 @@ def settings():
     return render_template('settings.html', title='Settings', form=settings)
 
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if current_user.is_admin:
+        return 'You are admin'
+    else:
+        return render_template('errors/403.html'), 403
+
+
 if __name__ == '__main__':
     app.run()
