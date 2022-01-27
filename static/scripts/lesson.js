@@ -113,4 +113,7 @@ for (let i = 0; i < text.length + 1; i++) {
     }
 }
 
+let block = document.body.getElementsByClassName('test-button')[0]
+blockContent.appendChild(block)
+
 

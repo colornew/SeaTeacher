@@ -9,7 +9,7 @@
     border-radius: 20px;
     background: #282870;
     font-size: x-large;
-    max-height: 70vh;
+    max-height: 68vh;
 }
 
 .lesson-name {
@@ -19,6 +19,7 @@
 }
 
 .content-block {
+    word-wrap: break-word;
     margin: 10px 0 0 0;
 }
 
@@ -47,7 +48,6 @@ main {
 }
 
 .video {
-    width: 100%;
 }
 
 .btn-close {
@@ -55,8 +55,8 @@ main {
     padding: 0;
     border: 3px solid #F64C72;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 4vw;
+    height: 4vw;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -120,6 +120,9 @@ main {
 }
 
 .test-button {
+    align-items: center;
+    text-align: center;
+    width: 40%;
     transition: transform .3s;
     text-decoration: none;
     display: block;
