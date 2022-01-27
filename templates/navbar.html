@@ -5,30 +5,21 @@
             <a href="{{ url_for('authentication') }}" class="button small">Авторизоваться</a>
         </div>
     {% else %}
-        <nav role='navigation'>
-            <div id="menuToggle">
-                <input type="checkbox"/>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="menu">
-                    <a href="/user/{{ current_user.id }}">
-                        <li>Профиль</li>
-                    </a>
-                    <a href="{{ url_for('roadmap') }}">
-                        <li>Курсы</li>
-                    </a>
-                    <a href="{{ url_for('index') }}">
-                        <li>Сообщество</li>
-                    </a>
-                    <a href="{{ url_for('settings') }}">
-                        <li>Настройки</li>
-                    </a>
-                    <a href="{{ url_for('logout') }}">
-                        <li>Выход</li>
-                    </a>
-                </ul>
-            </div>
-        </nav>
+        <div class="btn-group">
+            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Меню
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/user/{{ current_user.id }}">Профиль</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('roadmap') }}">Курсы</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('index') }}">Сообщество</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('settings') }}">Настройки</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('logout') }}">Выход</a></li>
+            </ul>
+        </div>
     {% endif %}
 </header>

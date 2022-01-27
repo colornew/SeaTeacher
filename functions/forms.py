@@ -31,7 +31,7 @@ class LoginForm(FlaskForm):
 
 class Settings(FlaskForm):
     username = StringField('Никнэйм', widget=TextInput())
-    image = FileField('image', validators=[
+    image = FileField('Аватар', validators=[
         FileRequired(),
         FileAllowed(['jpg', 'png'], 'Images only!')
     ])
