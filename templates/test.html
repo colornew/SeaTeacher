@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block custom %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="nav-lesson">
+        <a type="button" class="btn-close" href="{{ url_for('roadmap') }}">
+            <span class="icon-cross"></span>
+            <span class="visually-hidden">Close</span>
+        </a>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/test.js') }}"></script>
+{% endblock %}

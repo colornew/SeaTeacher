@@ -114,6 +114,9 @@ for (let i = 0; i < text.length + 1; i++) {
 }
 
 let block = document.body.getElementsByClassName('test-button')[0]
-blockContent.appendChild(block)
+let block_source = document.createElement('div')
+block_source.appendChild(block)
+block_source.setAttribute('class', 'button-block')
+blockContent.appendChild(block_source)
 
 

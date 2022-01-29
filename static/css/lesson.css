@@ -48,6 +48,7 @@ main {
 }
 
 .video {
+    width: 100%;
 }
 
 .btn-close {
@@ -128,4 +129,9 @@ main {
     display: block;
     border: #F64C72 6px solid;
     border-radius: 12vh;
+}
+
+.button-block {
+    display: flex;
+    justify-content: center;
 }

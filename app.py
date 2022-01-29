@@ -111,6 +111,8 @@ def settings():
             image.save(os.path.join(
                 app.instance_path[0:-9], 'static\\images\\users', filename
             ))
+            current_user.image_url = filename
+            db.session.commit()
         existing_user = Users.query.filter_by(username=username).first()
         if existing_user:
             flash('Человекс с таким именем уже есть')
@@ -118,7 +120,7 @@ def settings():
             if username != '':
                 current_user.username = username
                 db.session.commit()
-        return redirect(url_for('roadmap'))
+        return redirect(url_for('settings'))
     return render_template('settings.html', title='Settings', form=setting)
 
 
@@ -133,7 +135,7 @@ def admin():
 @app.route('/test/<int:test_id>', methods=['GET', 'POST'])
 def testing(test_id):
     if current_user.is_authenticated:
-        return 'You are'
+        return render_template('test.html')
     else:
         return render_template('errors/403.html'), 403
 
