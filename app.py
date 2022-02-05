@@ -3,7 +3,7 @@ import random
 from flask import Flask, render_template, request, redirect, url_for, abort, flash, jsonify
 import os
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-from functions.models import Users, db, Lesson, TestList
+from functions.models import Users, db, Lesson, TestList, UserAchievements, Achievements
 from functions.forms import *
 from cfg import *
 from flask_migrate import Migrate
@@ -158,6 +158,9 @@ def testing(test_id):
                         choices.append([i, i])
                     obj = RadioField(quest['question'], choices=choices, id=quest['id'])
                     locals()['form' + quest['id']] = obj
+                elif quest['format'] == 'question':
+                    obj = StringField(quest['question'], widget=TextInput())
+                    locals()['form' + quest['id']] = obj
             submit = SubmitField('Завершить')
 
         test_form = Answer()
@@ -165,10 +168,20 @@ def testing(test_id):
             count = 0
             for i in range(1, 11):
                 answer = test_form.data['form' + str(i)]
-                if answer == test_list[i - 1]['answers'].split(',')[0]:
+                if (answer == test_list[i - 1]['answers'].split(',')[0] and
+                    test_list[i - 1]['format'] == 'test') or (test_list[i - 1]['format'] == 'question' and
+                                                              answer.lower() in test_list[i - 1][
+                                                                  'answers'].lower().split(',')):
                     count += 1
+            current_user.score += count
+            db.session.commit()
+            if count >= 9:
+                achivka = UserAchievements(id_user=current_user.id, id_achievement=2)
+                db.session.add(achivka)
+                db.session.commit()
             return redirect(url_for('roadmap'))
         else:
+            print(test_list[0])
             return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
     else:
         return render_template('errors/403.html'), 403
