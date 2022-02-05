@@ -65,3 +65,11 @@ class UserAchievements(db.Model):
     id_achievement = db.Column(db.Integer, db.ForeignKey('achievements.id'))
     user = db.relationship('Users', backref=db.backref('achievement', lazy=True))
     achievement = db.relationship('Achievements', backref=db.backref('user', lazy=True))
+
+
+class TestList(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    test_type = db.Column(db.String(64), index=True, nullable=True)
+    content = db.Column(db.String(2048), nullable=True)
+    id_lesson = db.Column(db.Integer, db.ForeignKey('lesson.id'))
+    lesson = db.relationship('Lesson', backref=db.backref('test', lazy=True))

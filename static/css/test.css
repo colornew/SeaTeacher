@@ -1,0 +1,17 @@
+ul {
+    list-style: none;
+}
+
+button {
+    color: var(--main-font);
+    background: rgba(0,0,0,0);
+}
+
+.button-block {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 80%;
+}

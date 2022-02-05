@@ -10,6 +10,86 @@
             <span class="visually-hidden">Close</span>
         </a>
     </div>
+    <div class="content">
+        <form action={{ '/test/' + test_format.id|string }} method="post" novalidate>
+            <label for="chk" aria-hidden="true">Тестирование</label>
+            {{ answer_form.csrf_token }}
+            <div class="question-block">
+                {{ answer_form.form1.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[0]['source']) }}" alt="Тут была картинка">
+                {% endif %} 
+                {{ answer_form.form1 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form2.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[1]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form2 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form3.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[2]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form3 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form4.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[3]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form4 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form5.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[4]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form5 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form6.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[5]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form6 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form7.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[6]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form7 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form8.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[7]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form8 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form9.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[8]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form9 }}
+            </div>
+            <div class="question-block">
+                {{ answer_form.form10.label }}
+                {% if list_test[0]['source'] != 'none' %}
+                    <img src="{{ url_for('static', filename='images/tests/'+list_test[9]['source']) }}" alt="Тут была картинка">
+                {% endif %}
+                {{ answer_form.form10 }}
+            </div>
+            <div class="button-block">
+                <button type="submit" class="test-button">Завершить</button>
+            </div>
+
+        </form>
+    </div>
 {% endblock %}
 {% block scripts %}
     <script src="{{ url_for('static', filename='scripts/test.js') }}"></script>

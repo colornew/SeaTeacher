@@ -16,6 +16,7 @@ page {
 }
 
 .information {
+    margin-top: 10px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -56,7 +57,14 @@ page {
 }
 
 .achievement-list {
+    padding: 10px;
     display: flex;
     color: white;
 }
 
+.name-achievement {
+    font-size: xxx-large;
+    text-align: center;
+    border: solid #000000 2px;
+    border-radius: 60px;
+}

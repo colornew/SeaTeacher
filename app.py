@@ -1,11 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for, abort, flash
+import random
+
+from flask import Flask, render_template, request, redirect, url_for, abort, flash, jsonify
 import os
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-from functions.models import Users, db, Lesson
+from functions.models import Users, db, Lesson, TestList
 from functions.forms import *
 from cfg import *
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
+from flask_wtf import FlaskForm
+from wtforms.fields import RadioField
+from wtforms.widgets import TextArea, TextInput, PasswordInput, ListWidget, FileInput, RadioInput
+import ast
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
@@ -135,7 +141,35 @@ def admin():
 @app.route('/test/<int:test_id>', methods=['GET', 'POST'])
 def testing(test_id):
     if current_user.is_authenticated:
-        return render_template('test.html')
+        test = TestList.query.filter_by(id=test_id).first()
+        content = test.content.split('*')
+        test_list = []
+        for i in content:
+            test_list.append(ast.literal_eval('{' + i + '}'))
+
+        class Answer(FlaskForm):
+            list_forms = []
+            for quest in test_list:
+                if quest['format'] == 'test':
+                    list_answer = quest['answers'].split(',')
+                    random.shuffle(list_answer)
+                    choices = []
+                    for i in list_answer:
+                        choices.append([i, i])
+                    obj = RadioField(quest['question'], choices=choices, id=quest['id'])
+                    locals()['form' + quest['id']] = obj
+            submit = SubmitField('Завершить')
+
+        test_form = Answer()
+        if test_form.is_submitted():
+            count = 0
+            for i in range(1, 11):
+                answer = test_form.data['form' + str(i)]
+                if answer == test_list[i - 1]['answers'].split(',')[0]:
+                    count += 1
+            return redirect(url_for('roadmap'))
+        else:
+            return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
     else:
         return render_template('errors/403.html'), 403
 

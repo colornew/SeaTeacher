@@ -14,6 +14,6 @@ function rising(event) {
 
 function stopRising(event) {
     const button = this
-    button.style.background = 'none';
+    button.style.background = 'rgba(0,0,0,0)';
     button.style.transform = 'scale(1)'
 }
