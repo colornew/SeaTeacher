@@ -50,6 +50,7 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont.className = 'video content-block';
                 let sourceMP4 = document.createElement("source");
                 sourceMP4.type = "video/mp4";
+                cont.controls = "controls";
                 sourceMP4.src = "/static/video/curse/" + st.source;
                 cont.appendChild(sourceMP4);
             } else if (st.format === 'list') {

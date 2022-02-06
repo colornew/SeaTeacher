@@ -15,3 +15,7 @@ button {
 img {
     width: 80%;
 }
+.question-block {
+    display: flex;
+    flex-direction: column;
+}

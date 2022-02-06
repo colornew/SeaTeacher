@@ -50,6 +50,12 @@ def not_found_error(error):
     return render_template('errors/404.html'), 403
 
 
+@app.errorhandler(500)
+def not_found_error(error):
+    print(error)
+    return render_template('errors/500.html'), 500
+
+
 @app.route('/authentication', methods=['GET', 'POST'])
 def authentication():
     if current_user.is_authenticated:
@@ -115,7 +121,7 @@ def settings():
             filename = secure_filename(image.filename)
             filename = str(current_user.id) + '.' + filename.split('.')[1]
             image.save(os.path.join(
-                app.instance_path[0:-9], 'static\\images\\users', filename
+                app.instance_path[0:-9], 'static/images/users', filename
             ))
             current_user.image_url = filename
             db.session.commit()
@@ -181,7 +187,6 @@ def testing(test_id):
                 db.session.commit()
             return redirect(url_for('roadmap'))
         else:
-            print(test_list[0])
             return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
     else:
         return render_template('errors/403.html'), 403
