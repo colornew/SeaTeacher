@@ -182,7 +182,7 @@ def testing(test_id):
             current_user.score += count
             db.session.commit()
             if count >= 9:
-                achivka = UserAchievements(id_user=current_user.id, id_achievement=2)
+                achivka = UserAchievements(id_user=current_user.id, id_achievement=test_id)
                 db.session.add(achivka)
                 db.session.commit()
             return redirect(url_for('roadmap'))

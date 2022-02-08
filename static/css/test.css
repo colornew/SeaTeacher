@@ -13,9 +13,13 @@ button {
 }
 
 img {
-    width: 80%;
+    width: 50%;
 }
 .question-block {
     display: flex;
     flex-direction: column;
+}
+
+li {
+    display: block;
 }
