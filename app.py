@@ -192,5 +192,16 @@ def testing(test_id):
         return render_template('errors/403.html'), 403
 
 
+@app.route('/help')
+def help_menu():
+    return render_template('help.html')
+
+
+@app.route('/rating')
+def rating():
+    users = Users.query.order_by(Users.score.desc()).all()[0:10]
+    return render_template('rating.html', title='Рейтинг', users=users)
+
+
 if __name__ == '__main__':
     app.run()
