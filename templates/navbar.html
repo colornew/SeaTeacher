@@ -5,16 +5,19 @@
             <a href="{{ url_for('authentication') }}" class="button small">Авторизоваться</a>
         </div>
     {% else %}
-        <div class="btn-group">
-            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                Меню
-            </button>
-            <ul class="dropdown-menu">
+        <div class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Меню</a>
+            <ul class="dropdown-menu dropdown-menu-right">
                 <li><a class="dropdown-item" href="/user/{{ current_user.id }}">Профиль</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('roadmap') }}">Курсы</a></li>
-                <li><a class="dropdown-item" href="{{ url_for('index') }}">Сообщество</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('settings') }}">Настройки</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('help_menu') }}">Помощь</a></li>
+                <li><a class="dropdown-item" href="#">&raquo; Сообщество  </a>
+                    <ul class="submenu submenu-left dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('rating') }}">Рейтинг</a></li>
+                        <li><a class="dropdown-item" href="">To be continue...</a></li>
+                    </ul>
+                </li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
