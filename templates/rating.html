@@ -5,7 +5,7 @@
 {% block content %}
     <div class="page-rating">
         {% for user in users %}
-            <a href="/user/{{ user.username }}" class="user-bar">
+            <a href="/user/{{ user.id }}" class="user-bar">
                 <div class="user-name">{{ user.username }}</div>
                 <div class="user-score">Очки: {{ user.score }}</div>
             </a>

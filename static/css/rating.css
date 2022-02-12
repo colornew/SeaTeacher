@@ -1,14 +1,16 @@
 .page-rating {
-    margin-top: 20px;
-    min-height: 40vh;
-    color: #F64C72;
-    background: #242582;
-    padding: 10vw 10vh 10vw 10vh;
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    width: 60vw;
-    border-radius: 80px;
+    margin-top: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px;
+    color: var(--main-font);
+    min-height: 50vh;
+    width: 80vw;
+    border: #000000 solid 2px;
+    border-radius: 20px;
+    background: #282870;
+    font-size: x-large;
+    max-height: 68vh;
 }
 
 body {
@@ -52,6 +54,7 @@ main {
     .user-name {
         font-size: 3vh;
     }
+
     .user-score {
         font-size: 2vh;
     }
