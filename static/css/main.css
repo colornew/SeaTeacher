@@ -12,13 +12,16 @@ body {
 
 .page {
     background: linear-gradient(to bottom, #1d154e, #3d377f, #39395b);
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 60vh;
 }
 
 .welcome-block {
