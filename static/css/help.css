@@ -1,0 +1,10 @@
+.help-block {
+    color: var(--main-font);
+    display: flex;
+    flex-direction: column;
+}
+
+img
+{
+    width: 30vw;
+}
