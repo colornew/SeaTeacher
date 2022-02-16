@@ -55,3 +55,10 @@ main .button {
     font-size: xxx-large;
     color: #fff;
 }
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-y: auto;
+    }
+}

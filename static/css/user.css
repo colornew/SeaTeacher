@@ -57,6 +57,7 @@ page {
 }
 
 .achievement-list {
+    flex-wrap: wrap;
     padding: 10px;
     display: flex;
     color: white;
@@ -67,4 +68,46 @@ page {
     text-align: center;
     border: solid #000000 2px;
     border-radius: 60px;
+}
+
+@media (max-width: 800px) {
+    .achievement {
+        width: 200px;
+        height: 200px;
+    }
+    .user-info {
+        flex-direction: column;
+    }
+    .avatar {
+        height: 30vw;
+        width: 30vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .achievement {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .achievement {
+        width: 100px;
+        height: 100px;
+    }
+    .block-info {
+        font-size: large;
+    }
+    .name-achievement {
+        font-size: x-large;
+    }
+    main {
+        display: block;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+    .information {
+    width: 99%;
+    }
 }

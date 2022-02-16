@@ -36,3 +36,14 @@
         font-size: large;
     }
 }
+
+@media (max-width: 300px) {
+    .lesson-s {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
