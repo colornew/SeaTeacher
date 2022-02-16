@@ -22,3 +22,17 @@
     color: var(--main-font);
     display: none;
 }
+
+@media (max-width: 400px) {
+    .map {
+        overflow-y: auto;
+        flex-direction: column;
+    }
+    body {
+        overflow-y: auto;
+    }
+    .descr {
+
+        font-size: large;
+    }
+}
