@@ -203,5 +203,15 @@ def rating():
     return render_template('rating.html', title='Рейтинг', users=users)
 
 
+@app.route('/recept')
+def recept():
+    return render_template('recept.html')
+
+
+@app.route('/recept2')
+def recept2():
+    return render_template('recept2.html')
+
+
 if __name__ == '__main__':
     app.run()
