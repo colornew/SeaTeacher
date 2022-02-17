@@ -57,8 +57,28 @@ main .button {
 }
 
 @media (max-width: 600px) {
-
     body {
         overflow-y: auto;
     }
+
+    .welcome-string {
+        font-size: 8vw;
+    }
+
+    main .button {
+        font-size: x-large;
+        padding: 1vh 2vw 1vh 2vw;
+    }
+}
+
+@media (max-width: 400px) {
+    main .button {
+        font-size: x-large;
+        padding: 2vh 1vw 2vh 1vw;
+    }
+    .welcome-string {
+        font-size: x-large;
+    }
+
+
 }
