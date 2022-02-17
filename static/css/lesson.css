@@ -135,3 +135,30 @@ main {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 800px) {
+    .btn-close .icon-cross {
+        width: 20px;
+        height: 40px;
+    }
+
+    .btn-close:hover, .btn-close:focus {
+        transform: rotateZ(90deg);
+        background: none;
+
+    }
+
+    .btn-close {
+        margin: 0;
+        padding: 0;
+        border: 0 solid;
+    }
+}
+
+@media (max-width: 400px) {
+    .content {
+        min-height: 50vh;
+        width: 98vw;
+        font-size: large;
+    }
+}
