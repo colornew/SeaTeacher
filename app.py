@@ -139,7 +139,14 @@ def settings():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if current_user.is_admin:
-        return 'You are admin'
+        form = UploadCurse()
+        if form.validate_on_submit():
+            name, text = form.name.data, form.text.data
+            data = date.today().strftime("%d/%m/%Y")
+            less = Lesson(name=name, text=text, date_create=data)
+            db.session.add(less)
+            db.session.commit()
+        return render_template('panel.html', curse=form)
     else:
         return render_template('errors/403.html'), 403
 
@@ -201,16 +208,6 @@ def help_menu():
 def rating():
     users = Users.query.order_by(Users.score.desc()).all()[0:10]
     return render_template('rating.html', title='Рейтинг', users=users)
-
-
-@app.route('/recept')
-def recept():
-    return render_template('recept.html')
-
-
-@app.route('/recept2')
-def recept2():
-    return render_template('recept2.html')
 
 
 if __name__ == '__main__':

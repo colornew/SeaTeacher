@@ -3,6 +3,7 @@ from wtforms import StringField, IntegerField, BooleanField, PasswordField, Subm
 from wtforms.validators import DataRequired, Email, EqualTo, NumberRange
 from wtforms.widgets import TextArea, TextInput, PasswordInput, ListWidget, FileInput
 from flask_wtf.file import FileField, FileAllowed, FileRequired
+from datetime import date
 
 
 class Registration(FlaskForm):
@@ -36,3 +37,8 @@ class Settings(FlaskForm):
         FileAllowed(['jpg', 'png'], 'Images only!')
     ])
     submit = SubmitField('Изменить')
+
+
+class UploadCurse(FlaskForm):
+    name = StringField('Название курса', widget=TextInput())
+    text = StringField('Контент', validators=[DataRequired()], widget=TextArea())

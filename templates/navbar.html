@@ -12,6 +12,9 @@
                 <li><a class="dropdown-item" href="{{ url_for('roadmap') }}">Курсы</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('settings') }}">Настройки</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('help_menu') }}">Помощь</a></li>
+                {% if current_user.is_admin %}
+                    <li><a class="dropdown-item" href="{{ url_for('admin') }}">Панель</a></li>
+                {% endif %}
                 <li><a class="dropdown-item" href="#">&raquo; Сообщество  </a>
                     <ul class="submenu submenu-left dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url_for('rating') }}">Рейтинг</a></li>

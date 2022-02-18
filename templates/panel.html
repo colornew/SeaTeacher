@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block custom %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    Добавление курсов
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form action="{{ url_for('admin') }}" enctype="multipart/form-data" method="post" novalidate>
+                        {{ curse.csrf_token }}
+                        <div class="block-form">
+                            <p>{{ curse.name.label }}</p>
+                            <p>{{ curse.name(class_="answer-form") }}</p>
+                        </div>
+                        <div class="block-form">
+                            <p>{{ curse.text.label }}</p>
+                            <p>{{ curse.text(class_="answer-form") }}</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Изменить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
