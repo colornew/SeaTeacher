@@ -32,6 +32,6 @@ For upload photo to database you need download your photo to static/images/curse
 
 * color (*format:txt,color:blue *) its border for video
 * size: from one to three, from small to large (*format:txt,size:1 *)
-* source (*format:photo,source:1.mp4 *) in this attr you keep href for video
+* source (*format:video,source:1.mp4 *) in this attr you keep href for video
 
 For upload video to database you need download your photo to static/video/curse
