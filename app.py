@@ -159,8 +159,10 @@ def curse_correct(curse_id):
         curse = CorrectCurse()
         lesson_s = Lesson.query.filter_by(id=curse_id).first()
         if curse.validate_on_submit():
-            lesson_s.name = curse.name.data
-            lesson_s.text = curse.text.data
+            if curse.name.data != '':
+                lesson_s.name = curse.name.data
+            if curse.text.data != '':
+                lesson_s.text = curse.text.data
             db.session.commit()
             redirect(url_for('admin'))
         return render_template('curserender.html', curse=curse, lesson=lesson_s)
