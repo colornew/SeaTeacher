@@ -31,6 +31,30 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Редактирование
+                    курсов
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {% for lesson in lesson_list %}
+                        <a href="{{ "/curse_correct/" + lesson.id|string }}"
+                           class="list-group-item list-group-item-action active" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ lesson.name }}</h5>
+                                <small>{{ lesson.date_create }}</small>
+                            </div>
+                            <p class="mb-1">{{ lesson.text[:30] }}...</p>
+                            <small>Id : {{ lesson.id }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

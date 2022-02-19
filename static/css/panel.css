@@ -1,3 +1,17 @@
 .accordion {
+    margin-top: 10px;
     min-width: 80vw;
+}
+
+#accordionExample {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion-item {
+    margin-top: 10px;
+}
+
+body {
+    overflow-y: auto;
 }

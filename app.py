@@ -140,13 +140,30 @@ def settings():
 def admin():
     if current_user.is_admin:
         form = UploadCurse()
+        lesson_list = Lesson.query.all()
         if form.validate_on_submit():
             name, text = form.name.data, form.text.data
             data = date.today().strftime("%d/%m/%Y")
             less = Lesson(name=name, text=text, date_create=data)
             db.session.add(less)
             db.session.commit()
-        return render_template('panel.html', curse=form)
+            return redirect(url_for('roadmap'))
+        return render_template('panel.html', curse=form, lesson_list=lesson_list)
+    else:
+        return render_template('errors/403.html'), 403
+
+
+@app.route('/curse_correct/<int:curse_id>', methods=['GET', 'POST'])
+def curse_correct(curse_id):
+    if current_user.is_admin:
+        curse = CorrectCurse()
+        lesson_s = Lesson.query.filter_by(id=curse_id).first()
+        if curse.validate_on_submit():
+            lesson_s.name = curse.name.data
+            lesson_s.text = curse.text.data
+            db.session.commit()
+            redirect(url_for('admin'))
+        return render_template('curserender.html', curse=curse, lesson=lesson_s)
     else:
         return render_template('errors/403.html'), 403
 
