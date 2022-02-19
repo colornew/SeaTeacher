@@ -170,6 +170,17 @@ def curse_correct(curse_id):
         return render_template('errors/403.html'), 403
 
 
+@app.route('/delete_curse/<int:curse_id>')
+def delete_curse(curse_id):
+    if current_user.is_admin:
+        lesson_s = Lesson.query.filter_by(id=curse_id).first()
+        db.session.delete(lesson_s)
+        db.session.commit()
+        return redirect(url_for('roadmap'))
+    else:
+        return render_template('errors/403.html'), 403
+
+
 @app.route('/test/<int:test_id>', methods=['GET', 'POST'])
 def testing(test_id):
     if current_user.is_authenticated:

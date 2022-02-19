@@ -18,5 +18,6 @@
             <p>{{ curse.text(class_="answer-form") }}</p>
         </div>
         <button type="submit" class="btn btn-primary">Изменить</button>
+        <a type="button" class="btn btn-danger" href="{{ "/delete_curse/" + lesson.id|string }}">Удалить</a>
     </form></div>
 {% endblock %}
