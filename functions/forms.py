@@ -46,4 +46,4 @@ class UploadCurse(FlaskForm):
 
 class CorrectCurse(FlaskForm):
     name = StringField('Название курса', widget=TextInput())
-    text = StringField('Контент', validators=[DataRequired()], widget=TextArea())
+    text = StringField('Контент', widget=TextArea())

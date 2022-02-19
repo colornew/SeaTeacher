@@ -161,4 +161,22 @@ main {
         width: 98vw;
         font-size: large;
     }
+
+    .photo.small {
+        width: 30vw;
+        height: 30vh;
+
+    }
+
+    .photo.medium {
+        width: 50vw;
+        height: 40vh;
+
+    }
+
+    .photo.large {
+        width: 60vw;
+        height: 40vh;
+
+    }
 }

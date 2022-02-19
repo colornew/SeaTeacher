@@ -21,5 +21,8 @@ img {
 }
 
 li {
-    display: block;
+    margin-top: 5px;
+    border: 2px black solid;
+    display: flex;
+    align-items: center;
 }
