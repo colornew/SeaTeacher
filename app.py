@@ -164,7 +164,7 @@ def curse_correct(curse_id):
             if curse.text.data != '':
                 lesson_s.text = curse.text.data
             db.session.commit()
-            redirect(url_for('admin'))
+            return redirect(url_for('admin'))
         return render_template('curserender.html', curse=curse, lesson=lesson_s)
     else:
         return render_template('errors/403.html'), 403
