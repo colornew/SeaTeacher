@@ -41,9 +41,15 @@ class Settings(FlaskForm):
 
 class UploadCurse(FlaskForm):
     name = StringField('Название курса', widget=TextInput())
-    text = StringField('Контент', validators=[DataRequired()], widget=TextArea())
+    text = FileField('Текст', validators=[
+        FileRequired(),
+        FileAllowed(['txt'], 'Txt only!')
+    ])
 
 
 class CorrectCurse(FlaskForm):
     name = StringField('Название курса', widget=TextInput())
-    text = StringField('Контент', widget=TextArea())
+    text = FileField('Текст', validators=[
+        FileRequired(),
+        FileAllowed(['txt'], 'Txt only!')
+    ])

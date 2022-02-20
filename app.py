@@ -143,7 +143,15 @@ def admin():
         lesson_list = Lesson.query.all()
         if form.validate_on_submit():
             name, text = form.name.data, form.text.data
+            filename = secure_filename(text.filename)
+            filename = str(current_user.id) + '.' + filename.split('.')[1]
+            text.save(os.path.join(
+                app.instance_path[0:-9], 'static/tmp', filename
+            ))
             data = date.today().strftime("%d/%m/%Y")
+            r = open('static/tmp/'+filename, 'r', encoding='UTF8')
+            text = r.read()
+            r.close()
             less = Lesson(name=name, text=text, date_create=data)
             db.session.add(less)
             db.session.commit()
@@ -162,7 +170,16 @@ def curse_correct(curse_id):
             if curse.name.data != '':
                 lesson_s.name = curse.name.data
             if curse.text.data != '':
-                lesson_s.text = curse.text.data
+                text = curse.text.data
+                filename = secure_filename(text.filename)
+                filename = str(current_user.id) + '.' + filename.split('.')[1]
+                text.save(os.path.join(
+                    app.instance_path[0:-9], 'static/tmp', filename
+                ))
+                r = open('static/tmp/' + filename, 'r', encoding='UTF8')
+                text = r.read()
+                r.close()
+                lesson_s.text = text
             db.session.commit()
             return redirect(url_for('admin'))
         return render_template('curserender.html', curse=curse, lesson=lesson_s)

@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block custom %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
 {% endblock %}
 
 {% block content %}
     <div class="settings">
-
-
-    <form action="{{ "/curse_correct/" + lesson.id|string }}" enctype="multipart/form-data" method="post" novalidate>
-        {{ curse.csrf_token }}
-        <div class="block-form">
-            <p>{{ curse.name.label }}</p>
-            <p>{{ curse.name(class_="answer-form") }}</p>
-        </div>
-        <div class="block-form">
-            <p>{{ curse.text.label }}</p>
-            <p>{{ curse.text(class_="answer-form") }}</p>
-        </div>
-        <button type="submit" class="btn btn-primary">Изменить</button>
-        <a type="button" class="btn btn-danger" href="{{ "/delete_curse/" + lesson.id|string }}">Удалить</a>
-    </form></div>
+        <form action="{{ "/curse_correct/" + lesson.id|string }}" enctype="multipart/form-data" method="post"
+              novalidate>
+            {{ curse.csrf_token }}
+            <div class="block-form">
+                <p>{{ curse.name.label }}</p>
+                <p>{{ curse.name(class_="answer-form") }}</p>
+            </div>
+            <div class="block-form">
+                <p>{{ curse.text.label }}</p>
+                <p>{{ curse.text(class_='form-control') }}</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Изменить</button>
+            <a type="button" class="btn btn-danger" href="{{ "/delete_curse/" + lesson.id|string }}">Удалить</a>
+        </form>
+    </div>
 {% endblock %}
