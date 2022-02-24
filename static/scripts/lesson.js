@@ -16,7 +16,9 @@ for (let i = 0; i < text.length + 1; i++) {
     if (char === '*') {
         if (first) {
             cont = document.getElementsByClassName('content-block')[count_block]
-            if (txt !== '') {cont.innerHTML = txt}
+            if (txt !== '') {
+                cont.innerHTML = txt
+            }
             txt = ''
             style_check = true
             first = false
@@ -67,7 +69,7 @@ for (let i = 0; i < text.length + 1; i++) {
                 cont = document.createElement('div')
                 cont.className += ' content-block'
             }
-            count_block ++
+            count_block++
             for (let attribute in st) {
                 if (attribute === 'size') {
                     if (st[attribute] === '1') {
@@ -119,5 +121,20 @@ let block_source = document.createElement('div')
 block_source.appendChild(block)
 block_source.setAttribute('class', 'button-block')
 blockContent.appendChild(block_source)
+
+
+let viewport_height = window.innerHeight;
+
+blockContent.addEventListener('dblclick', myFunction)
+
+
+function myFunction() {
+    if (blockContent.className === 'content slideUp') {
+        blockContent.className = 'content'
+    }
+    else {
+        blockContent.className += " slideUp";
+    }
+}
 
 

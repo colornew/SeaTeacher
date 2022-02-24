@@ -12,6 +12,38 @@
     max-height: 68vh;
 }
 
+.slideUp {
+    animation-name: slideUp;
+    -webkit-animation-name: slideUp;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+    width: 99vw;
+    max-height: 80vh;
+}
+
+@keyframes slideUp {
+    0% {
+        width: 80vw;
+        max-height: 68vh;
+    }
+    100% {
+        width: 99vw;
+        max-height: 80vh;
+    }
+}
+
+@-webkit-keyframes slideUp {
+    0% {
+        width: 80vw;
+        max-height: 80vh;
+    }
+    100% {
+        width: 99vw;
+        max-height: 80vh;
+    }
+}
+
 .lesson-name {
     margin: 10px;
     color: var(--main-font);
