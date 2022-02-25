@@ -112,10 +112,21 @@ header li {
 }
 
 @media (max-width: 400px) {
-    header {
+    .button-group {
         flex-direction: column;
+    }
+    .button {
+        font-size: large;
+        margin-top: 10px;
     }
     .logo {
         font-size: xx-large;
     }
+}
+
+@media (max-width: 760px) {
+    header {
+        flex-direction: column;
+    }
+
 }

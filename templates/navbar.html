@@ -2,7 +2,8 @@
     <a class="logo" href="/">SeaTeacher</a>
     {% if current_user.is_anonymous %}
         <div class="button-group">
-            <a href="{{ url_for('authentication') }}" class="button small">Авторизоваться</a>
+            <a href="{{ url_for('registration') }}" class="button small">Регистрация</a>
+            <a href="{{ url_for('login') }}" class="button small">Авторизация</a>
         </div>
     {% else %}
         <div class="nav-item dropdown">

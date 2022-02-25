@@ -3,7 +3,6 @@
     <div class="welcome-block">
         <div class="welcome-string">Добро пожаловать в Морскую Школу</div>
         {% if current_user.is_anonymous %}
-            <a href="{{ url_for('authentication') }}" class="button">Вперед</a>
         {% else %}
             <a href="{{ url_for('roadmap') }}" class="button">Вперед</a>
         {% endif %}</div>
