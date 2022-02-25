@@ -189,6 +189,21 @@ def curse_correct(curse_id):
                 text = r.read()
                 r.close()
                 lesson_s.text = text
+            if curse.test.data != '':
+                test = curse.test.data
+                filename = secure_filename(test.filename)
+                filename = str(current_user.id) + '.' + filename.split('.')[1]
+                test.save(os.path.join(
+                    app.instance_path[0:-9], 'static/tmp', filename
+                ))
+                r = open('static/tmp/' + filename, 'r', encoding='UTF8')
+                test = r.read()
+                r.close()
+                if TestList.query.filter_by(id=curse_id).first() is None:
+                    ts = TestList(test_type='standart', content=test, id_lesson=curse_id)
+                    db.session.add(ts)
+                else:
+                    TestList.query.filter_by(id=curse_id).first().content = test
             db.session.commit()
             return redirect(url_for('admin'))
         return render_template('curserender.html', curse=curse, lesson=lesson_s)
