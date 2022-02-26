@@ -178,7 +178,7 @@ def curse_correct(curse_id):
         if curse.validate_on_submit():
             if curse.name.data != '':
                 lesson_s.name = curse.name.data
-            if curse.text.data != '':
+            if curse.text.data is not None:
                 text = curse.text.data
                 filename = secure_filename(text.filename)
                 filename = str(current_user.id) + '.' + filename.split('.')[1]
@@ -189,7 +189,7 @@ def curse_correct(curse_id):
                 text = r.read()
                 r.close()
                 lesson_s.text = text
-            if curse.test.data != '':
+            if curse.test.data is not None:
                 test = curse.test.data
                 filename = secure_filename(test.filename)
                 filename = str(current_user.id) + '.' + filename.split('.')[1]
