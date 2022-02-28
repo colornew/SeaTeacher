@@ -204,6 +204,17 @@ def curse_correct(curse_id):
                     db.session.add(ts)
                 else:
                     TestList.query.filter_by(id=curse_id).first().content = test
+            if curse.file.data is not None:
+                test = curse.file.data
+                filename = secure_filename(test.filename)
+                if filename.split('.')[1] == 'jpg' or 'png' == filename.split('.')[1]:
+                    test.save(os.path.join(
+                        app.instance_path[0:-9], 'static/images', filename
+                    ))
+                else:
+                    test.save(os.path.join(
+                        app.instance_path[0:-9], 'static/video', filename
+                    ))
             db.session.commit()
             return redirect(url_for('admin'))
         return render_template('curserender.html', curse=curse, lesson=lesson_s)

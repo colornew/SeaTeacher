@@ -55,3 +55,6 @@ class CorrectCurse(FlaskForm):
     test = FileField('Тест', validators=[
         FileAllowed(['txt'], 'Txt only!')
     ])
+    file = FileField('Файл', validators=[
+        FileAllowed(['jpg', 'png', 'mp4'], 'Txt only!')
+    ])
