@@ -209,11 +209,11 @@ def curse_correct(curse_id):
                 filename = secure_filename(test.filename)
                 if filename.split('.')[1] == 'jpg' or 'png' == filename.split('.')[1]:
                     test.save(os.path.join(
-                        app.instance_path[0:-9], 'static/images', filename
+                        app.instance_path[0:-9], 'static/images/curse', filename
                     ))
                 else:
                     test.save(os.path.join(
-                        app.instance_path[0:-9], 'static/video', filename
+                        app.instance_path[0:-9], 'static/video/curse', filename
                     ))
             db.session.commit()
             return redirect(url_for('admin'))
