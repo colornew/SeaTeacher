@@ -82,3 +82,17 @@ main .button {
 
 
 }
+
+.flashes {
+    font-family: "Playfair Display", serif;
+    font-size: xx-large;
+    position: absolute;
+    color: white;
+    background: rgba(0, 255, 255, 0.38);
+    top: 40vh;
+    left: 30vw;
+}
+
+.flashes li {
+    list-style: none;
+}

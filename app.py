@@ -136,7 +136,7 @@ def settings():
             db.session.commit()
         existing_user = Users.query.filter_by(username=username).first()
         if existing_user:
-            flash('Человекс с таким именем уже есть')
+            pass
         else:
             if username != '':
                 current_user.username = username
@@ -263,6 +263,8 @@ def testing(test_id):
                 achivka = UserAchievements(id_user=current_user.id, id_achievement=test_id)
                 db.session.add(achivka)
                 db.session.commit()
+                flash('Вы получили достижение!!!')
+            flash('Вы набрали - ' + str(count) + ' очков')
             return redirect(url_for('roadmap'))
         else:
             return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
