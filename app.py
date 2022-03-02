@@ -237,48 +237,50 @@ def delete_curse(curse_id):
 def testing(test_id):
     if current_user.is_authenticated:
         test = TestList.query.filter_by(id=test_id).first()
-        content = test.content.split('*')
-        test_list = []
-        for i in content:
-            test_list.append(ast.literal_eval('{' + i + '}'))
+        if test:
+            content = test.content.split('*')
+            test_list = []
+            for i in content:
+                test_list.append(ast.literal_eval('{' + i + '}'))
 
-        class Answer(FlaskForm):
-            list_forms = []
-            for quest in test_list:
-                if quest['format'] == 'test':
-                    list_answer = quest['answers'].split(',')
-                    random.shuffle(list_answer)
-                    choices = []
-                    for i in list_answer:
-                        choices.append([i, i])
-                    obj = RadioField(quest['question'], choices=choices, id=quest['id'])
-                    locals()['form' + quest['id']] = obj
-                elif quest['format'] == 'question':
-                    obj = StringField(quest['question'], widget=TextInput())
-                    locals()['form' + quest['id']] = obj
-            submit = SubmitField('Завершить')
-
-        test_form = Answer()
-        if test_form.is_submitted():
-            count = 0
-            for i in range(1, 11):
-                answer = test_form.data['form' + str(i)]
-                if (answer == test_list[i - 1]['answers'].split(',')[0] and
-                    test_list[i - 1]['format'] == 'test') or (test_list[i - 1]['format'] == 'question' and
-                                                              answer.lower() in test_list[i - 1][
-                                                                  'answers'].lower().split(',')):
-                    count += 1
-            current_user.score += count
-            db.session.commit()
-            if count >= 9:
-                achivka = UserAchievements(id_user=current_user.id, id_achievement=test_id)
-                db.session.add(achivka)
+            class Answer(FlaskForm):
+                list_forms = []
+                for quest in test_list:
+                    if quest['format'] == 'test':
+                        list_answer = quest['answers'].split(',')
+                        random.shuffle(list_answer)
+                        choices = []
+                        for i in list_answer:
+                            choices.append([i, i])
+                        obj = RadioField(quest['question'], choices=choices, id=quest['id'])
+                        locals()['form' + quest['id']] = obj
+                    elif quest['format'] == 'question':
+                        obj = StringField(quest['question'], widget=TextInput())
+                        locals()['form' + quest['id']] = obj
+                submit = SubmitField('Завершить')
+            test_form = Answer()
+            if test_form.is_submitted():
+                count = 0
+                for i in range(1, 11):
+                    answer = test_form.data['form' + str(i)]
+                    if (answer == test_list[i - 1]['answers'].split(',')[0] and
+                        test_list[i - 1]['format'] == 'test') or (test_list[i - 1]['format'] == 'question' and
+                                                                  answer.lower() in test_list[i - 1][
+                                                                      'answers'].lower().split(',')):
+                        count += 1
+                current_user.score += count
                 db.session.commit()
-                flash('Вы получили достижение!!!')
-            flash('Вы набрали - ' + str(count) + ' очков')
-            return redirect(url_for('roadmap'))
+                if count >= 9:
+                    achivka = UserAchievements(id_user=current_user.id, id_achievement=test_id)
+                    db.session.add(achivka)
+                    db.session.commit()
+                    flash('Вы получили достижение!!!')
+                flash('Вы набрали - ' + str(count) + ' очков')
+                return redirect(url_for('roadmap'))
+            else:
+                return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
         else:
-            return render_template('test.html', test_format=test, answer_form=test_form, list_test=test_list)
+            return render_template('errors/404.html'), 404
     else:
         return render_template('errors/403.html'), 403
 
